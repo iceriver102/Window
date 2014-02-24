@@ -1,0 +1,5 @@
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\bin\ChitietChamCongKithuat.Web.dll
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\bin\ChitietChamCongKithuat.Web.pdb
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\obj\Release\ChitietChamCongKithuat.Web.dll
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\obj\Release\ChitietChamCongKithuat.Web.pdb
+C:\Users\Giang.Phan\Documents\Visual Studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\obj\Release\ChitietChamCongKithuat.Web.csprojResolveAssemblyReference.cache

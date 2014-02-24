@@ -1,0 +1,4 @@
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\bin\ChitietChamCongKithuat.Web.dll
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\bin\ChitietChamCongKithuat.Web.pdb
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\obj\Debug\ChitietChamCongKithuat.Web.dll
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\obj\Debug\ChitietChamCongKithuat.Web.pdb

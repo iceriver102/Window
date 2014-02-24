@@ -1,0 +1,2 @@
+c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat
+Generated_Code\ChitietChamCongKithuat.Web.g.cs
