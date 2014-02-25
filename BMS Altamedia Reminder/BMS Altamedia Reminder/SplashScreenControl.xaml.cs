@@ -20,17 +20,12 @@ namespace BMS_Altamedia_Reminder
             MultiResImageChooserUri tmp = new MultiResImageChooserUri();
             tmp.Source = "/Assets/Splashing/SplashScreenImage.jpg";
             img_splashing.Source=  new BitmapImage(tmp.BestResolutionImage);
-            Size ScreenSize= GetScreenResolution();
+            Size ScreenSize= Common.GetScreenResolution();
             this.Width = ScreenSize.Width;
             this.Height = ScreenSize.Height;
           
         }
        
-        public Size GetScreenResolution()
-        {
-            double ScreenWidth = Application.Current.Host.Content.ActualWidth;
-            double ScreenHeight = Application.Current.Host.Content.ActualHeight;
-            return new Size(ScreenWidth, ScreenHeight);
-        } 
+       
     }
 }

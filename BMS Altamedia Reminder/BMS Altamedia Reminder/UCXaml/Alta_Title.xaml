@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="BMS_Altamedia_Reminder.UCXaml.Alta_Title"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="45" d:DesignWidth="350">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/title_backgound.png"/>
+        </Grid.Background>
+        <TextBlock x:Name="txt_Tile" Padding="3" HorizontalAlignment="Stretch" Margin="0" TextAlignment="Center" TextWrapping="Wrap" Text="Xin chào Phan thanh giang" VerticalAlignment="Stretch" Foreground="#FBFF8800"/>
+    </Grid>
+</UserControl>

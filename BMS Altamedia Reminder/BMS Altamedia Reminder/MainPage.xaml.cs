@@ -14,6 +14,13 @@ using System.Windows.Controls.Primitives;
 using Windows.Storage;
 using System.IO.IsolatedStorage;
 using BMS_Altamedia_Reminder.Class;
+using Microsoft.Phone.Notification;
+using System.Text;
+using System.IO;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
+using System.Windows.Threading;
+using BMS_Altamedia_Reminder.UCXaml;
 
 namespace BMS_Altamedia_Reminder
 {
@@ -24,24 +31,40 @@ namespace BMS_Altamedia_Reminder
         BackgroundWorker backroungWorker;
         private Popup popup;
         private Boolean flag_flashing;
+        private Boolean flag_login;
+        private Alta_Title ViewTitle;
         private IsolatedStorageSettings userSettings = IsolatedStorageSettings.ApplicationSettings;
         userDataJson user;
         public MainPage()
         {
             InitializeComponent();
+            loadAppData();
             LoadData();
             flag_flashing = false;
+            Notifycation();
             ShowSplash();
+
         }
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            // Remove Page2 from the backstack
             if (this.NavigationService.CanGoBack)
             {
                 this.NavigationService.RemoveBackEntry();
             }
         }
 
+        private void loadAppData()
+        {
+            try
+            {
+                Common.urlToast = (String)userSettings["urlPush"];
+            }
+            catch (Exception ex)
+            {
+                Common.urlToast = "";
+            }
+        
+        }
 
         private void StartLoadingData()
         {
@@ -67,22 +90,33 @@ namespace BMS_Altamedia_Reminder
             {
                 user = new userDataJson();
             }
+           
+
 
         }
-        public void Write()
+        void showTile(String title, int time=3000)
         {
-            try
-            {
-                userSettings.Add("name", "thanh giang");
-                // tbResults.Text = "Name saved. Refresh page to see changes.";
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                this.popup = new Popup();
+                ViewTitle = new Alta_Title(title,time);
+                ViewTitle.Show += ViewTitle_Show;
+                ViewTitle.Hide += ViewTitle_Hide;
+                this.popup.Child = ViewTitle;
+                this.popup.IsOpen = true;
         }
 
+        void ViewTitle_Hide(object sender, EventArgs e)
+        {
+            this.Dispatcher.BeginInvoke(() =>
+            {
+                this.popup.IsOpen = false;
+                
+            });
+        }
 
+        void ViewTitle_Show(object sender, EventArgs e)
+        {
+           
+        }
         void backroungWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             this.flag_flashing = true;
@@ -98,17 +132,90 @@ namespace BMS_Altamedia_Reminder
                 {
                     ShowLogin();
                 }
+                if (user.result)
+                    showTile("Xin chào " + user.user_name);
             });
         }
+        private void Notifycation()
+        {
+            HttpNotificationChannel pushChannel;
+
+            // The name of our push channel.
+            string channelName = "ToastBMSRemider";
+            pushChannel = HttpNotificationChannel.Find(channelName);
+            if (pushChannel == null)
+            {
+                pushChannel = new HttpNotificationChannel(channelName);
+
+                // Register for all the events before attempting to open the channel.
+                pushChannel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(PushChannel_ChannelUriUpdated);
+                pushChannel.ErrorOccurred += new EventHandler<NotificationChannelErrorEventArgs>(PushChannel_ErrorOccurred);
+
+                // Register for this notification only if you need to receive the notifications while your application is running.
+                pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
+                pushChannel.Open();
+                pushChannel.BindToShellToast();
+                //    System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
+
+            }
+            else
+            {
+                // The channel was already open, so just register for all the events.
+                pushChannel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(PushChannel_ChannelUriUpdated);
+                pushChannel.ErrorOccurred += new EventHandler<NotificationChannelErrorEventArgs>(PushChannel_ErrorOccurred);
+
+                // Register for this notification only if you need to receive the notifications while your application is running.
+                pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
+
+                // Display the URI for testing purposes. Normally, the URI would be passed back to your web service at this point.
+                System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
+                try
+                {
+                    userSettings.Add("urlPush", pushChannel.ChannelUri.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             if (this.flag_flashing)
                 e.Cancel = true;
+            else
+            {
+                if (MessageBox.Show("Bạn có muốn thoát chương trình không?", "Thoát", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
         }
         private void ShowLogin()
         {
-            this.NavigationService.Navigate(new Uri("/Login.xaml?NavigatedFrom=Main Page", UriKind.Relative));
+            // this.NavigationService.Navigate(new Uri("/Login.xaml?NavigatedFrom=Main Page", UriKind.Relative));
+            this.popup = new Popup();
+            Login formLogin = new Login();
+            formLogin.Completed += formLogin_Completed;
+            this.popup.Child = formLogin;
+            this.popup.IsOpen = true;
+        }
 
+        private void formLogin_Completed(object sender, EventArgs e)
+        {
+            Login tmp = sender as Login;
+            this.Dispatcher.BeginInvoke(() =>
+            {
+                this.user = tmp.user;
+                this.popup.IsOpen = false;
+                if (user.result)
+                    showTile("Xin chào "+user.user_name);
+            });
         }
         private void ShowSplash()
         {
@@ -116,6 +223,191 @@ namespace BMS_Altamedia_Reminder
             this.popup.Child = new SplashScreenControl();
             this.popup.IsOpen = true;
             StartLoadingData();
+        }
+
+        #region Notifycation
+
+        /// <summary>
+        /// Event handler for when the push channel Uri is updated.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void PushChannel_ChannelUriUpdated(object sender, NotificationChannelUriEventArgs e)
+        {
+
+            Dispatcher.BeginInvoke(() =>
+            {
+                // Display the new URI for testing purposes.   Normally, the URI would be passed back to your web service at this point.
+                System.Diagnostics.Debug.WriteLine(e.ChannelUri.ToString());
+                try
+                {
+                    userSettings.Remove("urlPush");
+                    userSettings.Add("urlPush", e.ChannelUri.ToString());
+                }
+                catch (Exception ex)
+                {
+                    userSettings.Add("urlPush", e.ChannelUri.ToString());
+                }
+
+            });
+        }
+
+        /// <summary>
+        /// Event handler for when a push notification error occurs.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void PushChannel_ErrorOccurred(object sender, NotificationChannelErrorEventArgs e)
+        {
+            // Error handling logic for your particular application would be here.
+            Dispatcher.BeginInvoke(() =>
+                MessageBox.Show(String.Format("A push notification {0} error occurred.  {1} ({2}) {3}",
+                    e.ErrorType, e.Message, e.ErrorCode, e.ErrorAdditionalData))
+                    );
+        }
+
+        /// <summary>
+        /// Event handler for when a toast notification arrives while your application is running.  
+        /// The toast will not display if your application is running so you must add this
+        /// event handler if you want to do something with the toast notification.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void PushChannel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
+        {
+            StringBuilder message = new StringBuilder();
+            string relativeUri = string.Empty;
+
+            message.AppendFormat("Received Toast {0}:\n", DateTime.Now.ToShortTimeString());
+
+            // Parse out the information that was part of the message.
+            foreach (string key in e.Collection.Keys)
+            {
+                message.AppendFormat("{0}: {1}\n", key, e.Collection[key]);
+
+                if (string.Compare(
+                    key,
+                    "wp:Param",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.CompareOptions.IgnoreCase) == 0)
+                {
+                    relativeUri = e.Collection[key];
+                }
+            }
+
+            // Display a dialog of all the fields in the toast.
+            Dispatcher.BeginInvoke(() => MessageBox.Show(message.ToString()));
+
+        }
+
+
+        #endregion
+
+
+        private void post(String url, String postData)
+        {
+
+            System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+            byte[] data = encoding.GetBytes(postData);
+            HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url + "?mod=logout_reminder");
+            httpWReq.Method = "POST";
+            // httpWReq.ProtocolVersion = HttpVersion.Version10;
+            httpWReq.Headers = new WebHeaderCollection();
+            httpWReq.ContentType = "application/x-www-form-urlencoded";
+            httpWReq.ContentLength = data.Length;
+            httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);
+
+        }
+        String postData;
+
+        private void GetRequestStreamCallback(IAsyncResult asynchronousResult)
+        {
+            HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
+            // End the stream request operation
+            Stream postStream = request.EndGetRequestStream(asynchronousResult);
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(postData);
+            postStream.Write(data, 0, data.Length);
+            postStream.Close();
+
+            //Start the web request
+            request.BeginGetResponse(new AsyncCallback(GetResponceStreamCallback), request);
+
+        }
+
+        private void GetResponceStreamCallback(IAsyncResult callbackResult)
+        {
+            String result;
+            HttpWebRequest request = (HttpWebRequest)callbackResult.AsyncState;
+            HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(callbackResult);
+            using (StreamReader httpWebStreamReader = new StreamReader(response.GetResponseStream()))
+            {
+                result = httpWebStreamReader.ReadToEnd();
+            }
+        }
+
+        void rotate()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();           
+        }
+        int num_count=0;
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            DispatcherTimer tmp = sender as DispatcherTimer;
+
+            if (num_count >= Common.count)
+            {
+                tmp.Stop();
+            }
+            else
+            {
+                num_count++;
+            }
+            Storyboard MyStory = new Storyboard();
+            MyStory.Duration = new TimeSpan(0, 0, 1);
+            DoubleAnimation My_Double = new DoubleAnimation();
+            My_Double.Duration = new TimeSpan(0, 0, 1);
+            MyStory.Children.Add(My_Double);
+            RotateTransform MyTransform = new RotateTransform();
+            Storyboard.SetTarget(My_Double, MyTransform);
+            Storyboard.SetTargetProperty(My_Double, new PropertyPath("Angle"));
+            My_Double.To = 360;
+            img_refresh.RenderTransform = MyTransform;
+            img_refresh.RenderTransformOrigin = new Point(0.5, 0.5);
+            MyStory.Begin();
+        }
+
+        private void Event_Logout(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Đăng xuất", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                String token = (String)userSettings["urlPush"];
+                postData = "user_id=" + user.user_id + "&token=" + token + "&user_access_token=" + user.user_access_token;
+                try
+                {
+                    userSettings.Remove("login_result");
+                    userSettings.Remove("token");
+                    userSettings.Remove("user_id");
+                    userSettings.Remove("name");
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    user = new userDataJson();
+                    this.post(Common.http,postData);
+                    ShowLogin();
+
+                }
+            }
+        }
+
+        private void Event_LoadData(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            rotate();
         }
     }
 }

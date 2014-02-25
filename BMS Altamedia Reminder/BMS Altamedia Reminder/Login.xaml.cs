@@ -11,17 +11,28 @@ using System.IO;
 using BMS_Altamedia_Reminder.Class;
 using Newtonsoft.Json.Linq;
 using System.IO.IsolatedStorage;
+using ImageTools.IO.Gif;
 
 namespace BMS_Altamedia_Reminder
 {
-    public partial class Login : PhoneApplicationPage
+    public partial class Login : UserControl
     {
         public userDataJson user;
         public String postData;
+        private String result;
         private IsolatedStorageSettings userSettings = IsolatedStorageSettings.ApplicationSettings;
+        public Uri ImageSource { get; set; }
+
         public Login()
         {
             InitializeComponent();
+            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            ImageSource = new Uri("/Assets/animated_loader.gif", UriKind.RelativeOrAbsolute);
+            //this.DataContext = this;
+            img_loading.Visibility = Visibility.Collapsed;
+            Size ScreenSize = Common.GetScreenResolution();
+            this.Width = ScreenSize.Width;
+            this.Height = ScreenSize.Height;
             txt_pass.GotFocus += txt_pass_placeholder;
             txt_pass.LostFocus += txt_pass_placeholder;
             txt_pass.KeyDown += txt_pass_placeholder;
@@ -31,15 +42,16 @@ namespace BMS_Altamedia_Reminder
             txt_user.LostFocus += txt_user_GotFocus;
             user = new userDataJson();
             postData = String.Empty;
-
-        }
-
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            // Remove Page2 from the backstack
-            if (this.NavigationService.CanGoBack)
+            if (Common.urlToast == String.Empty)
             {
-                this.NavigationService.RemoveBackEntry();
+                try
+                {
+                    Common.urlToast = (String)userSettings["urlPush"];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Không thể lấy được ID của thiết bị hãy restart lại ứng dụng!");
+                }
             }
         }
 
@@ -59,6 +71,7 @@ namespace BMS_Altamedia_Reminder
                 userSettings.Add("login_result", user.result);
                 userSettings.Add("user_id", user.user_id);
                 userSettings.Add("token", user.user_access_token);
+                userSettings.Add("urlPush", Common.urlToast);
             }
         }
         void txt_user_GotFocus(object sender, RoutedEventArgs e)
@@ -80,26 +93,29 @@ namespace BMS_Altamedia_Reminder
                 txt_pass_hoder.Text = "Password";
             else txt_pass_hoder.Text = "";
         }
-        private void ShowMain()
+        public event EventHandler Completed;
+        private void ShowMain(EventArgs e)
         {
-          //  this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            if (user.result)
+            {
+                Write(this.user);
+                if (Completed != null)
+                    Completed(this, e);
+
+            }
+            else
+            {
+                this.Dispatcher.BeginInvoke(() =>
+            {
+                img_loading.Visibility = Visibility.Collapsed;
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
+            });
+            }
+
 
         }
-        private void ClearBackEntries()
-        {
-            while (NavigationService.BackStack != null & NavigationService.BackStack.Count() > 0)
-                NavigationService.RemoveBackEntry();
-        }
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            
-            if (MessageBox.Show("Bạn có muốn thoát chương trình?", "Thoát Chương Trình", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                this.ClearBackEntries();
-            else
-                e.Cancel = true;
-        }
-       
+
+
         private void Login_Event(object sender, System.Windows.Input.GestureEventArgs e)
         {
             if (txt_user.Text == "")
@@ -112,26 +128,25 @@ namespace BMS_Altamedia_Reminder
                 MessageBox.Show("Mật khẩu không được để trống");
                 return;
             }
-
+            img_loading.Visibility = Visibility.Visible;
             postData = "username=" + txt_user.Text;
             postData += "&password=" + txt_pass.Password;
-            postData += "&token=1234567890";
-           // MessageBox.Show("Đăng nhập");
-            post("http://bms.altamedia.vn/api.php");
+            postData += "&token=" + Common.urlToast;
+            // MessageBox.Show("Đăng nhập");
+            post(Common.http);
         }
         private void post(String url)
         {
-           
+
             System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
             byte[] data = encoding.GetBytes(postData);
             HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url + "?mod=login_reminder&device=windowphone");
             httpWReq.Method = "POST";
-           // httpWReq.ProtocolVersion = HttpVersion.Version10;
+            // httpWReq.ProtocolVersion = HttpVersion.Version10;
             httpWReq.Headers = new WebHeaderCollection();
             httpWReq.ContentType = "application/x-www-form-urlencoded";
             httpWReq.ContentLength = data.Length;
-            httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);          
-
+            httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);
         }
 
         private void GetRequestStreamCallback(IAsyncResult asynchronousResult)
@@ -139,14 +154,7 @@ namespace BMS_Altamedia_Reminder
             HttpWebRequest request = (HttpWebRequest)asynchronousResult.AsyncState;
             // End the stream request operation
             Stream postStream = request.EndGetRequestStream(asynchronousResult);
-         
-            //MessageBox.Show(postData);
-
             byte[] data = System.Text.Encoding.UTF8.GetBytes(postData);
-           // request.ContentLength = data.Length;
-
-            // Create the post data
-          //  string postData = "blah=" + textBlock1.Text + "&blah=" + textBlock2.Text + "&blah=moreblah";
             postStream.Write(data, 0, data.Length);
             postStream.Close();
 
@@ -154,16 +162,14 @@ namespace BMS_Altamedia_Reminder
             request.BeginGetResponse(new AsyncCallback(GetResponceStreamCallback), request);
 
         }
-        String result;
+
         void GetResponceStreamCallback(IAsyncResult callbackResult)
         {
             HttpWebRequest request = (HttpWebRequest)callbackResult.AsyncState;
             HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(callbackResult);
             using (StreamReader httpWebStreamReader = new StreamReader(response.GetResponseStream()))
             {
-               this.result = httpWebStreamReader.ReadToEnd();
-
-               
+                this.result = httpWebStreamReader.ReadToEnd();
             }
             dynamic tmpJson = JObject.Parse(this.result);
             user.result = tmpJson.result;
@@ -171,15 +177,9 @@ namespace BMS_Altamedia_Reminder
             user.user_id = tmpJson.user_id;
             user.user_name = tmpJson.user_name;
             user.msg = tmpJson.msg;
-            if (user.result)
-            {
-                Write(this.user);
-                ShowMain();
-            }
-            else
-            {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
-            }
+            EventArgs e = new EventArgs();
+            ShowMain(e);
+
 
         }
 
