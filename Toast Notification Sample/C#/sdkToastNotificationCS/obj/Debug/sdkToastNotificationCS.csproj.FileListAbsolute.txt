@@ -12,3 +12,17 @@ C:\Users\Giang.Phan\Desktop\Toast Notification Sample\C#\sdkToastNotificationCS\
 C:\Users\Giang.Phan\Desktop\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.dll
 C:\Users\Giang.Phan\Desktop\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.pdb
 C:\Users\Giang.Phan\Desktop\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\XapCacheFile.xml
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\ApplicationIcon.png
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\Background.png
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\sdkToastNotificationCS.dll
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\sdkToastNotificationCS.pdb
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\AppManifest.xaml
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\Bin\Debug\sdkToastNotificationCS.xap
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.csprojResolveAssemblyReference.cache
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\App.g.cs
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\MainPage.g.cs
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\Page2.g.cs
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.g.resources
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.dll
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\sdkToastNotificationCS.pdb
+D:\thanh giang\Window\Toast Notification Sample\C#\sdkToastNotificationCS\obj\Debug\XapCacheFile.xml

@@ -11,7 +11,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" >
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -26,12 +26,7 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock x:Name="lbDemo1" HorizontalAlignment="Left" Margin="33,96,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="419"/>
-            <TextBox x:Name="DemoLdb" HorizontalAlignment="Left" Height="72" Margin="10,186,-10,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="456"/>
-
-        </Grid>
-
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"/>
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
             account for the System Tray. Set this to 0 (or remove the margin altogether)

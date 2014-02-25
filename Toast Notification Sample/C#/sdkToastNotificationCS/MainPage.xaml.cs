@@ -51,7 +51,7 @@ namespace sdkToastNotificationCS
 
                 // Bind this new channel for toast events.
                 pushChannel.BindToShellToast();
-                System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
+            //    System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
 
             }
             else

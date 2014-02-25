@@ -1,6 +1,7 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="BMS Altamedia Reminder" EntryPointType="BMS_Altamedia_Reminder.App" RuntimeVersion="4.7.50308.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="BMS Altamedia Reminder" Source="BMS Altamedia Reminder.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
     <AssemblyPart Source="vi-VN/BMS Altamedia Reminder.resources.dll" />
     <AssemblyPart Source="vi/BMS Altamedia Reminder.resources.dll" />
   </Deployment.Parts>

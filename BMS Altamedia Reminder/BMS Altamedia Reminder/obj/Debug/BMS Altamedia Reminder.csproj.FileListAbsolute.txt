@@ -20,3 +20,29 @@ c:\users\giang.phan\documents\visual studio 2012\Projects\BMS Altamedia Reminder
 c:\users\giang.phan\documents\visual studio 2012\Projects\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.dll
 c:\users\giang.phan\documents\visual studio 2012\Projects\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.pdb
 c:\users\giang.phan\documents\visual studio 2012\Projects\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\XapCacheFile.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Assets\ApplicationIcon.png
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Assets\Tiles\FlipCycleTileLarge.png
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\BMS Altamedia Reminder.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\BMS Altamedia Reminder.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\vi-VN\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\vi\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\AppManifest.xaml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Properties\WMAppManifest.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\BMS_Altamedia_Reminder_Debug_AnyCPU.xap
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\App.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\Login.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\MainPage.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\SplashScreenControl.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.g.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS_Altamedia_Reminder.Resources.AppResources.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS_Altamedia_Reminder.Resources.AppResources.vi-VN.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS_Altamedia_Reminder.Resources.AppResources.vi.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.csproj.GenerateResource.Cache
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\vi-VN\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\vi\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\XapCacheFile.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.csprojResolveAssemblyReference.cache
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Newtonsoft.Json.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Newtonsoft.Json.xml

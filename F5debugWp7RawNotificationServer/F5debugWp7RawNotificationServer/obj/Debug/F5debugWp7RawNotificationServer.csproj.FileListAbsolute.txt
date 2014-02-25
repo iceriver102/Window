@@ -31,3 +31,36 @@ c:\users\giang.phan\documents\visual studio 2012\Projects\F5debugWp7RawNotificat
 c:\users\giang.phan\documents\visual studio 2012\Projects\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.csprojResolveAssemblyReference.cache
 c:\users\giang.phan\documents\visual studio 2012\Projects\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.dll
 c:\users\giang.phan\documents\visual studio 2012\Projects\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.pdb
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\F5debugWp7RawNotificationServer.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\F5debugWp7RawNotificationServer.pdb
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Antlr3.Runtime.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\AspNet.ScriptManager.jQuery.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.AspNet.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.Core.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OAuth.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OpenId.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\EntityFramework.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.ScriptManager.WebForms.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.Web.Infrastructure.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\System.Web.Optimization.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\System.Web.Providers.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\WebGrease.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\EntityFramework.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.Core.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OAuth.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OpenId.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\DotNetOpenAuth.AspNet.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.AspNet.Membership.OpenAuth.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.csprojResolveAssemblyReference.cache
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.dll
+D:\thanh giang\Window\F5debugWp7RawNotificationServer\F5debugWp7RawNotificationServer\obj\Debug\F5debugWp7RawNotificationServer.pdb

@@ -25,7 +25,7 @@ namespace BMS_Altamedia_Reminder
             this.Height = ScreenSize.Height;
           
         }
-
+       
         public Size GetScreenResolution()
         {
             double ScreenWidth = Application.Current.Host.Content.ActualWidth;
