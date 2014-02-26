@@ -38,12 +38,11 @@ namespace BMS_Altamedia_Reminder
         public MainPage()
         {
             InitializeComponent();
+            Notifycation();
             loadAppData();
             LoadData();
             flag_flashing = false;
-            Notifycation();
             ShowSplash();
-
         }
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -63,7 +62,7 @@ namespace BMS_Altamedia_Reminder
             {
                 Common.urlToast = "";
             }
-        
+
         }
 
         private void StartLoadingData()
@@ -90,32 +89,31 @@ namespace BMS_Altamedia_Reminder
             {
                 user = new userDataJson();
             }
-           
+
 
 
         }
-        void showTile(String title, int time=3000)
+        void showTile(String title, int time = 3000)
         {
-                this.popup = new Popup();
-                ViewTitle = new Alta_Title(title,time);
-                ViewTitle.Show += ViewTitle_Show;
-                ViewTitle.Hide += ViewTitle_Hide;
-                this.popup.Child = ViewTitle;
-                this.popup.IsOpen = true;
+            viewTitle.txt_Title.Text = title;
+            ViewTitle_Show();
+
+        }
+       
+        void ViewTitle_Show()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += HideTile;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Start();
         }
 
-        void ViewTitle_Hide(object sender, EventArgs e)
+        private void HideTile(object sender, EventArgs e)
         {
             this.Dispatcher.BeginInvoke(() =>
             {
-                this.popup.IsOpen = false;
-                
+                viewTitle.Visibility = Visibility.Collapsed;
             });
-        }
-
-        void ViewTitle_Show(object sender, EventArgs e)
-        {
-           
         }
         void backroungWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -132,7 +130,7 @@ namespace BMS_Altamedia_Reminder
                 {
                     ShowLogin();
                 }
-                if (user.result)
+                else
                     showTile("Xin chào " + user.user_name);
             });
         }
@@ -141,7 +139,7 @@ namespace BMS_Altamedia_Reminder
             HttpNotificationChannel pushChannel;
 
             // The name of our push channel.
-            string channelName = "ToastBMSRemider";
+            string channelName = "Toast_Alta_BMS_Remider";
             pushChannel = HttpNotificationChannel.Find(channelName);
             if (pushChannel == null)
             {
@@ -155,7 +153,6 @@ namespace BMS_Altamedia_Reminder
                 pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
                 pushChannel.Open();
                 pushChannel.BindToShellToast();
-                //    System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
 
             }
             else
@@ -167,11 +164,11 @@ namespace BMS_Altamedia_Reminder
                 // Register for this notification only if you need to receive the notifications while your application is running.
                 pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
 
-                // Display the URI for testing purposes. Normally, the URI would be passed back to your web service at this point.
-                System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
                 try
                 {
+                    Common.urlToast = pushChannel.ChannelUri.ToString();
                     userSettings.Add("urlPush", pushChannel.ChannelUri.ToString());
+
                 }
                 catch (Exception ex)
                 {
@@ -214,7 +211,7 @@ namespace BMS_Altamedia_Reminder
                 this.user = tmp.user;
                 this.popup.IsOpen = false;
                 if (user.result)
-                    showTile("Xin chào "+user.user_name);
+                    showTile("Xin chào " + user.user_name);
             });
         }
         private void ShowSplash()
@@ -238,7 +235,8 @@ namespace BMS_Altamedia_Reminder
             Dispatcher.BeginInvoke(() =>
             {
                 // Display the new URI for testing purposes.   Normally, the URI would be passed back to your web service at this point.
-                System.Diagnostics.Debug.WriteLine(e.ChannelUri.ToString());
+                // System.Diagnostics.Debug.WriteLine(e.ChannelUri.ToString());
+                Common.urlToast = e.ChannelUri.ToString();
                 try
                 {
                     userSettings.Remove("urlPush");
@@ -350,13 +348,12 @@ namespace BMS_Altamedia_Reminder
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();           
+            dispatcherTimer.Start();
         }
-        int num_count=0;
+        int num_count = 0;
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             DispatcherTimer tmp = sender as DispatcherTimer;
-
             if (num_count >= Common.count)
             {
                 tmp.Stop();
@@ -398,7 +395,7 @@ namespace BMS_Altamedia_Reminder
                 finally
                 {
                     user = new userDataJson();
-                    this.post(Common.http,postData);
+                    this.post(Common.http, postData);
                     ShowLogin();
 
                 }
@@ -408,6 +405,7 @@ namespace BMS_Altamedia_Reminder
         private void Event_LoadData(object sender, System.Windows.Input.GestureEventArgs e)
         {
             rotate();
+            showTile("Phan thanh giang");
         }
     }
 }

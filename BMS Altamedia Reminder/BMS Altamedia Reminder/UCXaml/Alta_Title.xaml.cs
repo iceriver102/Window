@@ -14,38 +14,18 @@ namespace BMS_Altamedia_Reminder.UCXaml
 {
     public partial class Alta_Title : UserControl
     {
-        BackgroundWorker backroungWorker;
-        int time;
-        public Alta_Title(String title,int time=3000)
+       
+       // public String title { get{return this.txt_Title.Text;} set { this.title = value; this.txt_Title.Text = value; } }
+        public Alta_Title()
         {
             InitializeComponent();
+           
             EventArgs e = new EventArgs();
-            this.time = time;
-            backroungWorker = new BackgroundWorker();
-            backroungWorker.DoWork += new DoWorkEventHandler(backroungWorker_DoWork);
-            backroungWorker.RunWorkerCompleted +=
-          new RunWorkerCompletedEventHandler(backroungWorker_RunWorkerCompleted);
-            backroungWorker.RunWorkerAsync();
-            txt_Tile.Text = title;
+            if (Show != null)
+                Show(this, e);
+            if (Hide != null)
+                Hide(this, e);
 
-            if(Show!=null)
-                Show(this,e);
-        }
-
-        private void backroungWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            this.Dispatcher.BeginInvoke(() =>
-            {
-                this.Visibility = Visibility.Collapsed;
-                EventArgs ex = new EventArgs();
-                if (Hide != null)
-                    Hide(this, ex);
-            });
-        }
-
-        private void backroungWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Thread.Sleep(time);
         }
         public event EventHandler Hide;
         public event EventHandler Show;
