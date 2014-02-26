@@ -21,28 +21,41 @@ using System.Windows.Media.Animation;
 using System.Windows.Media;
 using System.Windows.Threading;
 using BMS_Altamedia_Reminder.UCXaml;
+using System.Collections.ObjectModel;
 
 namespace BMS_Altamedia_Reminder
 {
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
-
+        List<Contact> _PathCollection =  new List<Contact>();
+        public List<Contact> PathCollection
+        { get { return _PathCollection; } }
         BackgroundWorker backroungWorker;
         private Popup popup;
         private Boolean flag_flashing;
         private Boolean flag_login;
         private Alta_Title ViewTitle;
         private IsolatedStorageSettings userSettings = IsolatedStorageSettings.ApplicationSettings;
+        List_Remider ListData;
         userDataJson user;
         public MainPage()
         {
             InitializeComponent();
-            Notifycation();
-            loadAppData();
-            LoadData();
-            flag_flashing = false;
-            ShowSplash();
+            try
+            {
+                LoadDemoData(50);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            // ListData = new List_Remider();
+            // Notifycation();
+            // loadAppData();
+            //LoadData();
+            // flag_flashing = false;
+            // ShowSplash();
         }
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -89,17 +102,16 @@ namespace BMS_Altamedia_Reminder
             {
                 user = new userDataJson();
             }
-
-
-
         }
         void showTile(String title, int time = 3000)
         {
+            layout_Msg.Visibility = Visibility.Visible;
+            viewTitle.Visibility = Visibility.Visible;
             viewTitle.txt_Title.Text = title;
             ViewTitle_Show();
 
         }
-       
+
         void ViewTitle_Show()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -113,6 +125,7 @@ namespace BMS_Altamedia_Reminder
             this.Dispatcher.BeginInvoke(() =>
             {
                 viewTitle.Visibility = Visibility.Collapsed;
+                layout_Msg.Visibility = Visibility.Collapsed;
             });
         }
         void backroungWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -131,9 +144,30 @@ namespace BMS_Altamedia_Reminder
                     ShowLogin();
                 }
                 else
+                {
                     showTile("Xin chào " + user.user_name);
+                    LoadDemoData();
+                }
             });
         }
+
+        private void LoadDemoData(int num = 10)
+        {
+
+            for (int i = 0; i < num; i++)
+            {
+                Contact tmp = new Contact();
+                tmp.Name = "name " + i;
+                tmp.ImageUrl = "Image " + i;
+                if (i % 2 == 0)
+                    tmp.IsLeft = true;
+                else tmp.IsLeft = false;
+                _PathCollection.Add(tmp);
+            }
+            ContactListBox.ItemsSource = this.PathCollection;
+
+        }
+
         private void Notifycation()
         {
             HttpNotificationChannel pushChannel;
@@ -211,7 +245,17 @@ namespace BMS_Altamedia_Reminder
                 this.user = tmp.user;
                 this.popup.IsOpen = false;
                 if (user.result)
+                {
                     showTile("Xin chào " + user.user_name);
+                    try
+                    {
+                        LoadDemoData(50);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             });
         }
         private void ShowSplash()
@@ -314,7 +358,6 @@ namespace BMS_Altamedia_Reminder
             httpWReq.ContentType = "application/x-www-form-urlencoded";
             httpWReq.ContentLength = data.Length;
             httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);
-
         }
         String postData;
 
@@ -397,7 +440,6 @@ namespace BMS_Altamedia_Reminder
                     user = new userDataJson();
                     this.post(Common.http, postData);
                     ShowLogin();
-
                 }
             }
         }
@@ -406,6 +448,49 @@ namespace BMS_Altamedia_Reminder
         {
             rotate();
             showTile("Phan thanh giang");
+            LoadDemoData();
         }
+    }
+    public abstract class DataTemplateSelector : ContentControl
+    {
+        public virtual DataTemplate SelectTemplate(object item, DependencyObject container)
+        {
+            return null;
+        }
+
+        protected override void OnContentChanged(object oldContent, object newContent)
+        {
+            base.OnContentChanged(oldContent, newContent);
+
+            ContentTemplate = SelectTemplate(newContent, this);
+        }
+    }
+    public class ContactTemplateSelector : DataTemplateSelector
+    {
+        public DataTemplate ImageLeft
+        {
+            get;
+            set;
+        }
+        public DataTemplate ImageRight
+        {
+            get;
+            set;
+        }
+        public override DataTemplate SelectTemplate(object item, DependencyObject container)
+        {
+            var contact = item as Contact;
+            if (contact != null)
+            {
+                return contact.IsLeft ? ImageLeft : ImageRight;
+            }
+            return base.SelectTemplate(item, container);
+        }
+    }
+    public class Contact
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+        public bool IsLeft;
     }
 }

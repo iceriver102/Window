@@ -93,7 +93,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Common.cs" />
+    <Compile Include="Class\List_Remider.cs" />
     <Compile Include="Class\MultiResImageChooserUri.cs" />
+    <Compile Include="Class\Reminder.cs" />
     <Compile Include="Class\ResolutionHelper.cs" />
     <Compile Include="Class\userDataJson.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -114,6 +116,12 @@
     </Compile>
     <Compile Include="UCXaml\Alta_Title.xaml.cs">
       <DependentUpon>Alta_Title.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UCXaml\Item_List.xaml.cs">
+      <DependentUpon>Item_List.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UCXaml\Title_List.xaml.cs">
+      <DependentUpon>Title_List.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +145,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UCXaml\Item_List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UCXaml\Title_List.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -146,6 +162,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Checkbox\checkbox_checked_bg.png" />
+    <Content Include="Assets\Checkbox\checkbox_uncheck_bg.png" />
     <Content Include="Assets\title_backgound.png" />
     <Resource Include="Assets\animated_loader.gif" />
     <Content Include="Assets\AlignmentGrid.png" />
