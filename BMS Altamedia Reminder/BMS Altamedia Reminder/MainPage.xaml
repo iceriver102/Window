@@ -15,33 +15,27 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" >
     <phone:PhoneApplicationPage.Resources>
-        <DataTemplate x:Key="ImageOnLeftItemTemplate">
-            <Grid Margin="12,0,0,12">
+        <DataTemplate x:Key="Item">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock  Width="100"
-                Height="100"
-                Text="{Binding ImageUrl}"/>
-                <TextBlock Grid.Column="1"
-                    Text="{Binding Name}" Style="{StaticResource PhoneTextLargeStyle}"
-                   />
+                <Image Margin="10,21,10,20" HorizontalAlignment="Center"  VerticalAlignment="Center" Source="{Binding img_stt}" Grid.RowSpan="3" Height="49" Width="49" />
+                <TextBlock  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="{Binding title}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="22"/>
+                <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding content}" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
+                <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="{Binding Str_date}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>
             </Grid>
-        </DataTemplate>
-        
-        <DataTemplate x:Key="ImageOnRightItemTemplate">
-            <Grid Margin="12,0,0,12">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding Name}"
-                    Style="{StaticResource PhoneTextLargeStyle}" />
-                <TextBlock Grid.Column="1"
-                Width="100"
-                Height="100"
-                Text="{Binding ImageUrl}" />
+        </DataTemplate>        
+        <DataTemplate x:Key="title">
+            <Grid >
+                <TextBlock  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"  Foreground="#FF040404" FontSize="24" Padding="6,5,6,0"/>
             </Grid>
         </DataTemplate>
 
@@ -72,30 +66,33 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <local:ContactTemplateSelector Content="{Binding}">
-                            <local:ContactTemplateSelector.ImageLeft>
+                            <local:ContactTemplateSelector.Item>
                                 <DataTemplate>
-                                    <Grid Margin="12,0,0,12">
+                                    <Grid Margin="5,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock  Width="100"  Height="100"  Text="{Binding ImageUrl}"/>
-                                        <TextBlock Grid.Column="1"  Text="{Binding Name}" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <Image HorizontalAlignment="Center"  VerticalAlignment="Center" Source="{Binding img_stt}" Grid.RowSpan="3"  Width="40" />
+                                        <TextBlock  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="{Binding title}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="22"/>
+                                        <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding content}" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
+                                        <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="{Binding Str_date}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>
                                     </Grid>
                                 </DataTemplate>
-                            </local:ContactTemplateSelector.ImageLeft>
-                            <local:ContactTemplateSelector.ImageRight>
+                            </local:ContactTemplateSelector.Item>
+                            <local:ContactTemplateSelector.title>
                                 <DataTemplate>
-                                    <Grid Margin="12,0,0,12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Text="{Binding Name}" Style="{StaticResource PhoneTextLargeStyle}" />
-                                        <TextBlock Grid.Column="1" Width="100"  Height="100" Text="{Binding ImageUrl}" />
+                                    <Grid >
+                                        <TextBlock  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"  Foreground="#FF040404" FontSize="24" Padding="6,5,6,0"/>
                                     </Grid>
                                 </DataTemplate>
-                            </local:ContactTemplateSelector.ImageRight>
+                            </local:ContactTemplateSelector.title>
                         </local:ContactTemplateSelector>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

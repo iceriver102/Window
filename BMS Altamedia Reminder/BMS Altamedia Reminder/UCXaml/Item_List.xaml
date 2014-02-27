@@ -8,7 +8,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="90" d:DesignWidth="480">
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Margin="5,0,0,0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -16,10 +16,10 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="check_img" Margin="10,21,10,20" HorizontalAlignment="Center"  VerticalAlignment="Center" Source="/Assets/Checkbox/checkbox_uncheck_bg.png" Grid.RowSpan="3" Height="49" Width="49" />
+        <Image x:Name="check_img" Width="40"  HorizontalAlignment="Center"  VerticalAlignment="Center" Source="/Assets/Checkbox/checkbox_uncheck_bg.png" Grid.RowSpan="3"  />
         <TextBlock x:Name="txt_title" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="Title" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="22"/>
         <TextBlock x:Name="txt_content" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="content" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
         <TextBlock x:Name="txt_date" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="dd/mm/yyyy" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>

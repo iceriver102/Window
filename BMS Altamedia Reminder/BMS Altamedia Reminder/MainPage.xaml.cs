@@ -28,8 +28,8 @@ namespace BMS_Altamedia_Reminder
     public partial class MainPage : PhoneApplicationPage
     {
         // Constructor
-        List<Contact> _PathCollection =  new List<Contact>();
-        public List<Contact> PathCollection
+        List<Reminder> _PathCollection =  new List<Reminder>();
+        public List<Reminder> PathCollection
         { get { return _PathCollection; } }
         BackgroundWorker backroungWorker;
         private Popup popup;
@@ -156,12 +156,20 @@ namespace BMS_Altamedia_Reminder
 
             for (int i = 0; i < num; i++)
             {
-                Contact tmp = new Contact();
-                tmp.Name = "name " + i;
-                tmp.ImageUrl = "Image " + i;
-                if (i % 2 == 0)
-                    tmp.IsLeft = true;
-                else tmp.IsLeft = false;
+                Reminder tmp = new Reminder();
+                if (i % 3 == 0)
+                {
+                    tmp.title_type = true;
+                    tmp.title = "Title " + i;
+                }
+                else
+                {
+                    tmp.title_type = false;
+                    tmp.title = "Item " + i;
+                    tmp.date = DateTime.Now;
+                    tmp.content = "Content " + i;
+                    
+                }
                 _PathCollection.Add(tmp);
             }
             ContactListBox.ItemsSource = this.PathCollection;
@@ -467,30 +475,24 @@ namespace BMS_Altamedia_Reminder
     }
     public class ContactTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate ImageLeft
+        public DataTemplate title
         {
             get;
             set;
         }
-        public DataTemplate ImageRight
+        public DataTemplate Item
         {
             get;
             set;
         }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var contact = item as Contact;
-            if (contact != null)
+            var reminder = item as Reminder;
+            if (reminder != null)
             {
-                return contact.IsLeft ? ImageLeft : ImageRight;
+                return reminder.title_type? title : Item;
             }
             return base.SelectTemplate(item, container);
         }
-    }
-    public class Contact
-    {
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
-        public bool IsLeft;
     }
 }
