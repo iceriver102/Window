@@ -110,14 +110,11 @@ D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Im
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\ImageTools.Utils.xml
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\Newtonsoft.Json.xml
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Debug\PhoneCodeContractsAssemblies.pdb
-D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.csprojResolveAssemblyReference.cache
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\App.g.cs
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\Login.g.cs
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\MainPage.g.cs
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\SplashScreenControl.g.cs
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\UCXaml\Alta_Title.g.cs
-D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\UCXaml\Item_List.g.cs
-D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\UCXaml\Title_List.g.cs
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS Altamedia Reminder.g.resources
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS_Altamedia_Reminder.Resources.AppResources.resources
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Debug\BMS_Altamedia_Reminder.Resources.AppResources.vi-VN.resources

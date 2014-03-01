@@ -10,7 +10,7 @@
     d:DesignHeight="45" d:DesignWidth="350">
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/title_backgound.png"/>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/title_backgound.png"/>
         </Grid.Background>
         <TextBlock x:Name="txt_Title" Padding="3" HorizontalAlignment="Stretch" Margin="0" TextAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Foreground="#FBFF8800"/>
     </Grid>

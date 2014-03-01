@@ -14,33 +14,6 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" >
-    <phone:PhoneApplicationPage.Resources>
-        <DataTemplate x:Key="Item">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Image Margin="10,21,10,20" HorizontalAlignment="Center"  VerticalAlignment="Center" Source="{Binding img_stt}" Grid.RowSpan="3" Height="49" Width="49" />
-                <TextBlock  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="{Binding title}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="22"/>
-                <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding content}" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
-                <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="{Binding Str_date}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>
-            </Grid>
-        </DataTemplate>        
-        <DataTemplate x:Key="title">
-            <Grid >
-                <TextBlock  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"  Foreground="#FF040404" FontSize="24" Padding="6,5,6,0"/>
-            </Grid>
-        </DataTemplate>
-
-    </phone:PhoneApplicationPage.Resources>
-
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.ColumnDefinitions>
@@ -59,40 +32,66 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0" Background="White" Grid.ColumnSpan="3">            
-            <ListBox x:Name="ContactListBox"
-            
-            VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFAEA82F" Margin="12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0" Background="White" Grid.ColumnSpan="3">
+            <ListBox x:Name="ContactListBox" 
+            VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0">
+                <ListBox.Background>
+                    <ImageBrush Stretch="None" ImageSource="/Assets/logobackground.png"/>
+                </ListBox.Background>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <local:ContactTemplateSelector Content="{Binding}">
                             <local:ContactTemplateSelector.Item>
                                 <DataTemplate>
-                                    <Grid Margin="5,0,0,0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="1*"/>
-                                            <RowDefinition Height="1*"/>
-                                            <RowDefinition Height="1*"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="4*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Image HorizontalAlignment="Center"  VerticalAlignment="Center" Source="{Binding img_stt}" Grid.RowSpan="3"  Width="40" />
-                                        <TextBlock  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="{Binding title}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="22"/>
-                                        <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding content}" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
-                                        <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="{Binding Str_date}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>
-                                    </Grid>
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480" Background="#4CB8B3B3">
+                                        <Grid HorizontalAlignment="Stretch" Margin="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image HorizontalAlignment="Center" Tag="{Binding id}" VerticalAlignment="Center" Source="{Binding img_stt}" Grid.RowSpan="3"  Width="40" Tap="Click_Complete"/>
+                                            <TextBlock  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,0"  TextWrapping="NoWrap" TextAlignment="Left" Text="{Binding title}" VerticalAlignment="Stretch" Foreground="#FFFF8800" FontSize="24"/>
+                                            <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding content}" VerticalAlignment="Stretch" Foreground="#FF3F4C6B" FontSize="16" FontStyle="Italic" Padding="0,3,0,5"/>
+                                            <TextBlock  Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="2" TextWrapping="NoWrap" Text="{Binding Str_date}" VerticalAlignment="Stretch" Foreground="#FFFFAE00" FontSize="16" Padding="0,3,0,0"/>
+                                        </Grid>
+                                    </Border>
                                 </DataTemplate>
                             </local:ContactTemplateSelector.Item>
+                            <local:ContactTemplateSelector.titlelast>
+                                <DataTemplate>
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#64009cff">
+                                        <Grid HorizontalAlignment="Stretch" Margin="0">
+                                            <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </local:ContactTemplateSelector.titlelast>
                             <local:ContactTemplateSelector.title>
                                 <DataTemplate>
-                                    <Grid >
-                                        <TextBlock  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"  Foreground="#FF040404" FontSize="24" Padding="6,5,6,0"/>
-                                    </Grid>
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#ffc4c4">
+                                        <Grid HorizontalAlignment="Stretch" Margin="0">
+                                            <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0"/>
+                                        </Grid>
+                                    </Border>
                                 </DataTemplate>
                             </local:ContactTemplateSelector.title>
+                            <local:ContactTemplateSelector.title_fur>
+                                <DataTemplate>
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#c9fbfa">
+                                        <Grid HorizontalAlignment="Stretch" Margin="0">
+                                            <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0">
+
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </local:ContactTemplateSelector.title_fur>
                         </local:ContactTemplateSelector>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -100,7 +99,7 @@
         </Grid>
         <Image x:Name="img_refresh" Margin="12"  HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Source="/Assets/Icon/ic_action_refresh.png" Tap="Event_LoadData"/>
         <Image Margin="12"  HorizontalAlignment="Center" Grid.Column="2" Grid.Row="0" Source="/Assets/Icon/ic_action_undo.png" Tap="Event_Logout"/>
-
+     
         <!--Uncomment to see an alignment grid to help ensure your controls are
             aligned on common boundaries.  The image has a top margin of -32px to
             account for the System Tray. Set this to 0 (or remove the margin altogether)

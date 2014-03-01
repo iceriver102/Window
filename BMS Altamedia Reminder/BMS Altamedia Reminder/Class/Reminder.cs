@@ -11,6 +11,7 @@ namespace BMS_Altamedia_Reminder.Class
     public class Reminder : IComparable<Reminder>
     {
         public int id { get; set; }
+        public String type { get; set; }
         public String title { get; set; }
         public String content { get; set; }
         public int canComplete { get; set; }
@@ -36,9 +37,10 @@ namespace BMS_Altamedia_Reminder.Class
             }
         }
         public DateTime date { get; set; }
-        public String Str_date { get { return date.ToLongDateString(); } }
-        public bool title_type = false;
+        public String Str_date { get { return String.Format("{0:dd/MM/yyyy}",date); } }
+        public int title_type = 0;
         public Color color;
+        public bool title_mode = false;
         public ImageSource img_stt
         {
             get
@@ -49,11 +51,22 @@ namespace BMS_Altamedia_Reminder.Class
                     return new BitmapImage(new Uri("/Assets/Checkbox/checkbox_uncheck_bg.png", UriKind.Relative));
             }
         }
+        public Reminder(Newtonsoft.Json.Linq.JObject json)
+        {
+            this.id = Convert.ToInt32(json.GetValue("id").ToString());
+            this.content = json.GetValue("content").ToString();
+            this.type = json.GetValue("type").ToString();
+            this.canComplete = Convert.ToInt32(json.GetValue("status").ToString());
+            this._isComplete = false;
+            this.title = json.GetValue("title").ToString();
+            this.date = DateTime.ParseExact(json.GetValue("time").ToString(), "dd/MM/yyyy", null);
+            this.title_mode = false;
+        }
         public Reminder()
         {
             _isComplete = false;
             canComplete = 1;
-            title_type = false;
+            title_mode = false;
         }
     }
 }

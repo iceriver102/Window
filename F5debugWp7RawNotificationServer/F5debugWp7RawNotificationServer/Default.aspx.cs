@@ -56,6 +56,17 @@ namespace F5debugWp7RawNotificationServer
             //}
 
             string PushNotificationXML = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + "<wp:Notification xmlns:wp=\"WPNotification\">" + "<wp:Toast>" + "<wp:Text1>{0}</wp:Text1>" + "<wp:Text2>{1}</wp:Text2>" + "</wp:Toast>" + "</wp:Notification>";
+            string tileMessage = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                    "<wp:Tile>" +
+                      "<wp:Count>1</wp:Count>" +
+                      "<wp:Title>Title</wp:Title>" +
+                      "<wp:WideBackBackgroundImage>/Assets/Tiles/widebacktitle.png</wp:WideBackBackgroundImage>" +
+                      "<wp:BackBackgroundImage>/Assets/Tiles/backtitle.png</wp:BackBackgroundImage>" +
+                      "<wp:BackTitle>back title</wp:BackTitle>" +
+                      "<wp:BackContent>content</wp:BackContent>" +
+                   "</wp:Tile> " +
+                "</wp:Notification>";
             string strChannelURI = TextBox1.Text.ToString();
             string strNotifitcationTitle = TextBox2.Text.ToString();
             string strNotifitcationsubTitle = TextBox3.Text.ToString();
@@ -68,20 +79,28 @@ namespace F5debugWp7RawNotificationServer
             sendNotificationRequest.Method = "POST";
             sendNotificationRequest.Headers = new WebHeaderCollection();
             sendNotificationRequest.ContentType = "text/xml";
-            sendNotificationRequest.Headers.Add("X-WindowsPhone-Target", "toast");
-            sendNotificationRequest.Headers.Add("X-NotificationClass", "2");
+          //  sendNotificationRequest.Headers.Add("X-WindowsPhone-Target", "toast");
+            //sendNotificationRequest.Headers.Add("X-NotificationClass", "2");
+            sendNotificationRequest.Headers.Add("X-WindowsPhone-Target", "token");
+            sendNotificationRequest.Headers.Add("X-NotificationClass", "1");
             string str = string.Format(PushNotificationXML, strNotifitcationTitle, strNotifitcationsubTitle);
-            byte[] strBytes = new UTF8Encoding().GetBytes(str);
+            //byte[] strBytes = new UTF8Encoding().GetBytes(str);
+            byte[] strBytes = Encoding.Default.GetBytes(tileMessage);
             sendNotificationRequest.ContentLength = strBytes.Length;
             using (Stream requestStream = sendNotificationRequest.GetRequestStream())
             {
                 requestStream.Write(strBytes, 0, strBytes.Length);
             }
             HttpWebResponse response = (HttpWebResponse)sendNotificationRequest.GetResponse();
+            //string notificationStatus = response.Headers["X-NotificationStatus"];
+            //string deviceConnectionStatus = response.Headers["X-DeviceConnectionStatus"];
+
             string notificationStatus = response.Headers["X-NotificationStatus"];
+            string notificationChannelStatus = response.Headers["X-SubscriptionStatus"];
             string deviceConnectionStatus = response.Headers["X-DeviceConnectionStatus"];
 
-            lblresult.Text = "Status: " + notificationStatus + " : " + deviceConnectionStatus;
+
+            lblresult.Text = "Status: " + notificationStatus + " : " + deviceConnectionStatus + ":" + notificationChannelStatus;
  
         }
     }

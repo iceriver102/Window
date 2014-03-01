@@ -12,6 +12,7 @@ using BMS_Altamedia_Reminder.Class;
 using Newtonsoft.Json.Linq;
 using System.IO.IsolatedStorage;
 using ImageTools.IO.Gif;
+using Microsoft.Phone.Net.NetworkInformation;
 
 namespace BMS_Altamedia_Reminder
 {
@@ -50,7 +51,7 @@ namespace BMS_Altamedia_Reminder
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không thể lấy được ID của thiết bị hãy restart lại ứng dụng!");
+                    MessageBox.Show("Không thể lấy được ID của thiết bị hãy kiểm tra lại Wifi hoặc 3G!");
                 }
             }
         }
@@ -135,18 +136,26 @@ namespace BMS_Altamedia_Reminder
             // MessageBox.Show("Đăng nhập");
             post(Common.http);
         }
+        #region HTTP
         private void post(String url)
         {
+            if (NetworkInterface.GetIsNetworkAvailable())
+            {
+                System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+                byte[] data = encoding.GetBytes(postData);
+                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url + "?mod=login_reminder&device=wp");
+                httpWReq.Method = "POST";
+                // httpWReq.ProtocolVersion = HttpVersion.Version10;
+                httpWReq.Headers = new WebHeaderCollection();
+                httpWReq.ContentType = "application/x-www-form-urlencoded";
+                httpWReq.ContentLength = data.Length;
+                httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);
+            }
+            else
+            {
+                MessageBox.Show("Không có kết nối internet kiểm tra lại Wifi hoặc 3G");
+            }
 
-            System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
-            byte[] data = encoding.GetBytes(postData);
-            HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url + "?mod=login_reminder&device=windowphone");
-            httpWReq.Method = "POST";
-            // httpWReq.ProtocolVersion = HttpVersion.Version10;
-            httpWReq.Headers = new WebHeaderCollection();
-            httpWReq.ContentType = "application/x-www-form-urlencoded";
-            httpWReq.ContentLength = data.Length;
-            httpWReq.BeginGetRequestStream(new AsyncCallback(GetRequestStreamCallback), httpWReq);
         }
 
         private void GetRequestStreamCallback(IAsyncResult asynchronousResult)
@@ -160,7 +169,6 @@ namespace BMS_Altamedia_Reminder
 
             //Start the web request
             request.BeginGetResponse(new AsyncCallback(GetResponceStreamCallback), request);
-
         }
 
         void GetResponceStreamCallback(IAsyncResult callbackResult)
@@ -179,10 +187,8 @@ namespace BMS_Altamedia_Reminder
             user.msg = tmpJson.msg;
             EventArgs e = new EventArgs();
             ShowMain(e);
-
-
         }
-
+        #endregion;
 
     }
 }

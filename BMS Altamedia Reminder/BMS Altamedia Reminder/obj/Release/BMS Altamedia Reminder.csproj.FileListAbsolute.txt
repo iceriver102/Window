@@ -1,0 +1,52 @@
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\Assets\ApplicationIcon.png
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\Assets\Tiles\FlipCycleTileLarge.png
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\BMS Altamedia Reminder.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\BMS Altamedia Reminder.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\vi-VN\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\vi\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\AppManifest.xaml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\Properties\WMAppManifest.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\BMS_Altamedia_Reminder_Release_AnyCPU.xap
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ICSharpCode.SharpZLib.Phone.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Controls.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Filtering.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Bmp.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Gif.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Png.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Utils.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\Newtonsoft.Json.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\PhoneCodeContractsAssemblies.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ICSharpCode.SharpZLib.Phone.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Controls.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Controls.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Filtering.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Filtering.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Bmp.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Bmp.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Gif.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Gif.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Png.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.IO.Png.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Utils.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\ImageTools.Utils.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\Newtonsoft.Json.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\Bin\Release\PhoneCodeContractsAssemblies.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\App.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\Login.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\MainPage.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\SplashScreenControl.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\UCXaml\Alta_Title.g.cs
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.g.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS_Altamedia_Reminder.Resources.AppResources.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS_Altamedia_Reminder.Resources.AppResources.vi-VN.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS_Altamedia_Reminder.Resources.AppResources.vi.resources
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.csproj.GenerateResource.Cache
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\vi-VN\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\vi\BMS Altamedia Reminder.resources.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.dll
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.pdb
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\XapCacheFile.xml
+D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.csprojResolveAssemblyReference.cache
