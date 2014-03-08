@@ -342,8 +342,7 @@ namespace BMS_Altamedia_Reminder
                                  title.title = "Công việc ngày hôm nay " + tmpGroup.title;
                                  title.title_type = 0;
                                  title.title_mode = true;
-                                 // title.color = new SolidColorBrush(Color.FromArgb(100, 255, 196, 196));
-                                 title.color = Colors.Blue;
+                                
                                  _PathCollection.Add(title);
                              }
                              else if (tmpGroup.date.Date < DateTime.Now.Date)
@@ -351,8 +350,7 @@ namespace BMS_Altamedia_Reminder
                                  Reminder title = new Reminder();
                                  title.title = "Công việc ngày " + tmpGroup.title;
                                  title.title_mode = true;
-                                 Color title_color = Color.FromArgb(39, 0, 156, 255);
-                                 title.color = Colors.Red;
+                                
                                  title.title_type = -1;
                                  _PathCollection.Add(title);
                              }
@@ -361,7 +359,7 @@ namespace BMS_Altamedia_Reminder
                                  Reminder title = new Reminder();
                                  title.title = "Công việc ngày " + tmpGroup.title;
                                  title.title_mode = true;
-                                 // title.color = new SolidColorBrush(Color.FromArgb(100, 201, 251, 250));
+                                 
                                  title.title_type = 1;
                                  _PathCollection.Add(title);
                              }
@@ -669,6 +667,13 @@ namespace BMS_Altamedia_Reminder
         private void optimize()
         {
             int lenght = _PathCollection.Count;
+            if (_PathCollection[lenght - 1].title_mode == true) 
+            {
+                _PathCollection.RemoveAt(lenght-1);
+                ContactListBox.ItemsSource = PathCollection;
+                lenght = _PathCollection.Count;
+            };
+            
             int i=0;
             while(i<lenght-1)
             {

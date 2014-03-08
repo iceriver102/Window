@@ -65,7 +65,7 @@
                             </local:ContactTemplateSelector.Item>
                             <local:ContactTemplateSelector.titlelast>
                                 <DataTemplate>
-                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#64009cff">
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50"  Background="#ffc4c4">
                                         <Grid HorizontalAlignment="Stretch" Margin="0">
                                             <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0"/>
                                         </Grid>
@@ -74,7 +74,7 @@
                             </local:ContactTemplateSelector.titlelast>
                             <local:ContactTemplateSelector.title>
                                 <DataTemplate>
-                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#ffc4c4">
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#c9fbfa">
                                         <Grid HorizontalAlignment="Stretch" Margin="0">
                                             <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0"/>
                                         </Grid>
@@ -83,7 +83,7 @@
                             </local:ContactTemplateSelector.title>
                             <local:ContactTemplateSelector.title_fur>
                                 <DataTemplate>
-                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50" Background="#c9fbfa">
+                                    <Border BorderBrush="#FF494848" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" Margin="0" Width="480"  Height="50"  Background="#64009cff">
                                         <Grid HorizontalAlignment="Stretch" Margin="0">
                                             <TextBlock Foreground="Black"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="NoWrap" Text="{Binding title}" VerticalAlignment="Stretch"   FontSize="24" Padding="6,5,6,0">
 

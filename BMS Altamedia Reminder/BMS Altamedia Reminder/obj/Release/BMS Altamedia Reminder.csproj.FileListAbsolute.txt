@@ -49,4 +49,3 @@ D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.dll
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.pdb
 D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\XapCacheFile.xml
-D:\thanh giang\Window\BMS Altamedia Reminder\BMS Altamedia Reminder\obj\Release\BMS Altamedia Reminder.csprojResolveAssemblyReference.cache
