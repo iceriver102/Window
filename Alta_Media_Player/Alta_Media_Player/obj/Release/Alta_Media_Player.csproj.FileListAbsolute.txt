@@ -1,0 +1,23 @@
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Alta_Media_Player.exe.config
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Alta_Media_Player.exe
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Alta_Media_Player.pdb
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\MySql.Data.dll
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Vlc.DotNet.Core.dll
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Vlc.DotNet.Core.Interops.dll
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Vlc.DotNet.Wpf.dll
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\MainWindow.baml
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\MainWindow.g.cs
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\App.g.cs
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player_MarkupCompile.cache
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.g.resources
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.Properties.Resources.resources
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.csproj.GenerateResource.Cache
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.exe
+C:\Users\phan\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.pdb
+C:\Users\phan\documents\visual studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.csprojResolveAssemblyReference.cache
+C:\Users\thanh_000\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\bin\Release\Alta_Media_Player.exe.config
+C:\Users\thanh_000\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.exe
+C:\Users\thanh_000\Documents\Visual Studio 2013\Projects\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.pdb
+C:\Users\thanh_000\Source\Repos\Window\Alta_Media_Player\Alta_Media_Player\bin\Release\Alta_Media_Player.exe.config
+C:\Users\thanh_000\Source\Repos\Window\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.exe
+C:\Users\thanh_000\Source\Repos\Window\Alta_Media_Player\Alta_Media_Player\obj\Release\Alta_Media_Player.pdb
