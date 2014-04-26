@@ -18,8 +18,8 @@ namespace Alta_Media_Manager.Alta_net
     {
         private ArrayList m_aryClients = new ArrayList();
         Socket listener;
-        public int dataControl = _controlVLC._CONTROL_FREE;
-        public int adminControl = _controlVLC._CONTROL_FREE;
+        public _controlVLC dataControl = _controlVLC._CONTROL_FREE;
+        public _controlVLC adminControl = _controlVLC._CONTROL_FREE;
         public String ipHostStream = "";
         public alta_class_net()
         {
@@ -149,7 +149,7 @@ namespace Alta_Media_Manager.Alta_net
                     else
                     {
                         client.flag_can_Coltrol = false;
-                        client.Sock.Send(getByteText("OK|205|ADMIN"));
+                        client.Sock.Send(getByteText("FAIL|205|ADMIN"));
                         client.Sock.Close();
                         m_aryClients.Remove(client);
                     }
@@ -214,7 +214,15 @@ namespace Alta_Media_Manager.Alta_net
                     }
                     else if (str.ToUpper() == "SCREEN")
                     {
+                        if (SendPlaying != null)
+                        {
+                            SendPlaying(this, client.Sock.RemoteEndPoint);
+                        }
                         this.adminControl = _controlVLC._CONTROL_SCREEN;
+                    }
+                    else if (str.ToUpper() == "TURN_OFF")
+                    {
+                        this.adminControl = _controlVLC._CONTROL_OFF;
                     }
                     else
                     {
@@ -249,7 +257,10 @@ namespace Alta_Media_Manager.Alta_net
                         this.ipHostStream = parseIP(client.Sock.RemoteEndPoint);
                     }
                     else if (str.ToUpper() == "SCREEN"){
-                        
+                        if (SendPlaying != null)
+                        {
+                            SendPlaying(this, client.Sock.RemoteEndPoint);
+                        }
                         this.dataControl = _controlVLC._CONTROL_SCREEN;
                     }
                     else if (str.ToUpper() == "STOPSTREAM")
@@ -266,6 +277,57 @@ namespace Alta_Media_Manager.Alta_net
                 client.SetupRecieveCallback(this);
             }
         }
+
+        public event EventHandler<EndPoint> SendPlaying; 
+
+        /// <summary>
+        /// Gui tin nhan den tat ca cac may
+        /// </summary>
+        /// <param name="Msg"></param>
+        public void SendMsg(String Msg)
+        {
+            int count= this.m_aryClients.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    SocketControlClient client = this.m_aryClients[i] as SocketControlClient;
+                    try
+                    {
+                        client.Sock.Send(getByteText(Msg));
+                    }
+                    catch (Exception ex)
+                    {
+#if DEBUG
+                        MessageBox.Show(ex.Message);
+#endif
+                    }
+                }
+            }
+        }
+
+        public void SendMsg(String Msg, EndPoint ip)
+        {
+            int count = this.m_aryClients.Count;
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    SocketControlClient client = this.m_aryClients[i] as SocketControlClient;
+                    if (client.Sock.RemoteEndPoint == ip)
+                    {
+                        client.Sock.Send(getByteText(Msg));
+                        return;
+                    }
+
+                }
+            }
+        }
+        /// <summary>
+        /// chuyen IP thanh String;
+        /// </summary>
+        /// <param name="ip">IP can chuyen</param>
+        /// <returns>String IP</returns>
 
 
         String parseIP(EndPoint ip)
@@ -287,10 +349,6 @@ namespace Alta_Media_Manager.Alta_net
                 }
             }
         }
-
-    
-     
-
         public void sendImage(String file )
         {
             if (file != "")
@@ -393,23 +451,25 @@ namespace Alta_Media_Manager.Alta_net
 
 
     }
-    public static class _controlVLC
+  
+    public enum _controlVLC
     {
-        public const int _CONTROL_PLAY = 1;
-        public const int _CONTROL_PAUSE = 2;
-        public const int _CONTROL_STOP = 3;
-        public const int _CONTROL_FREE = -1;
-        public const int _CONTROL_STREAM = 4;
-        public const int _CONTROL_WAIT = 6;
-        public const int _CONTROL_OPEN = 5;
-        public const int _CONTROL_Camera = 7;
-        public const int _CONTROL_Connect = 8;
-        public const int _CONTROL_NEXT = 9;
-        public const int _CONTROL_BACK = 10;
-        public const int _CONTROL_ABORT_USER = 11;
-        public const int _CONTROL_ACCEPT_USER = 12;
-        public const int _CONTROL_SCREEN = 13;
-        public const int _CONTROL_STREAM_STOP = 14;
+        _CONTROL_PLAY,
+        _CONTROL_PAUSE,
+        _CONTROL_STOP,
+        _CONTROL_FREE,
+        _CONTROL_STREAM,
+        _CONTROL_WAIT,
+        _CONTROL_OPEN,
+        _CONTROL_Camera,
+        _CONTROL_Connect,
+        _CONTROL_NEXT,
+        _CONTROL_BACK,
+        _CONTROL_ABORT_USER,
+        _CONTROL_ACCEPT_USER,
+        _CONTROL_SCREEN,
+        _CONTROL_STREAM_STOP,
+        _CONTROL_OFF
     }
   
 }

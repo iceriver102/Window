@@ -42,15 +42,18 @@ namespace Alta_Media_Player
         public bool flag_Load_Data;
         private BackgroundWorker bw = new BackgroundWorker();
         private Thread sendImgThread;
+        private Thread localThread;
         private alta_class_schedules Schedule;
         private alta_playlist_player mainPlaylist;
         private alta_class_net Tcp_Server;
+        private int countDemo;
         string output = @":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:rtp{sdp=rtsp://:8554/demo}";
         public MainWindow()
         {
             initVLC();
             InitializeComponent();
-            LoadConfig();
+            countDemo = 0;
+           // LoadConfig();
             Schedule = new alta_class_schedules();
             mainPlaylist = new alta_playlist_player();
             myVlcControl.PositionChanged += VlcControlOnPositionChanged;
@@ -59,9 +62,7 @@ namespace Alta_Media_Player
             myVlcControl.Playing += myVlcControl_Playing;
             myVlcControl.Stopped += myVlcControl_Stopped;
             myVlcControl.PlaybackMode = PlaybackModes.Loop;
-
             this.Closing += MainWindowOnClosing;
-
             flag_Load_Data = false;
             flagPlaying = false;
             flagTiming = false;
@@ -73,49 +74,29 @@ namespace Alta_Media_Player
             bw.WorkerSupportsCancellation = false;
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.ProgressChanged += new ProgressChangedEventHandler(bw_ProgressChanged);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-            //MediaBase tmpMedia = new LocationMedia("dshow://");
-            //tmpMedia.AddOption(output);
-            //myVlcControl.Media = tmpMedia;
-            //myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
-            //myVlcControl.Play();
-            Start();
-            //
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);        
+            Start();          
             Tcp_Server = new alta_class_net();
-            // sendImgThread = new Thread(SendImageThread);
-            // sendImgThread.IsBackground = true;
+            Tcp_Server.SendPlaying += Tcp_Server_SendPlaying;
+        }
+
+        void Tcp_Server_SendPlaying(object sender, System.Net.EndPoint e)
+        {
+            if (flagPlaying)
+            {
+                alta_media_in_player media = this.mainPlaylist.media[this.mainPlaylist.cur_pos_play];
+                this.Tcp_Server.SendMsg("PLAY|" + media.ID + "_" + media.name,e);
+            }
+            else
+            {
+                this.Tcp_Server.SendMsg("PLAY|" + -1 + "_" + "NULL");
+            }
         }
 
         void myVlcControl_Stopped(Vlc.DotNet.Wpf.VlcControl sender, VlcEventArgs<EventArgs> e)
         {
-            // myVlcStreaming.Stop();
-        }
-        private void LoadConfig()
-        {
-            try
-            {
-                if (File.Exists(CommonUtilities.config.ConfigFileName))
-                {
-                    FileOperations tmp = new FileOperations();
-                    CommonUtilities.config = tmp.readFile(CommonUtilities.config.ConfigFileName);
-                }
-                else
-                {
-                    FileOperations tmp = new FileOperations();
-                    tmp.wirteFile(CommonUtilities.config);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                CommonUtilities.config = CommonUtilities.config.LoadXML();
-#if DEBUG
-                MessageBox.Show(ex.Message);
-#endif
-            }
-        }
-
-
+           
+        }  
         #region Back ground worker
         private void Start()
         {
@@ -202,7 +183,7 @@ namespace Alta_Media_Player
         {
             if (!flag_Load_Data)
             {
-                LoadMyselfInfo();
+              //  LoadMyselfInfo();
                 this.LoadMySchedule();
             }
         }
@@ -231,11 +212,26 @@ namespace Alta_Media_Player
         }
         void myVlcControl_Playing(Vlc.DotNet.Wpf.VlcControl sender, VlcEventArgs<EventArgs> e)
         {
+            if (mediaClock != null && mediaClock.IsPaused)
+                mediaClock.Controller.Resume();
             HideControl();
         }
         void myVlcControl_Paused(Vlc.DotNet.Wpf.VlcControl sender, VlcEventArgs<EventArgs> e)
         {
-            //myVlcStreaming.Pause();
+
+            if (mediaClock != null)
+                mediaClock.Controller.Pause();
+            try
+            {
+                if (localThread != null && localThread.IsAlive)
+                    localThread.Abort();
+                VisibleControl();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
         }
         private void VlcControlOnTimeChanged(Vlc.DotNet.Wpf.VlcControl sender, VlcEventArgs<TimeSpan> e)
         {
@@ -263,8 +259,9 @@ namespace Alta_Media_Player
                 else if (duration.TotalSeconds - e.Data.TotalSeconds < 1 && !flagTiming && !flag_camera_media)
                 {
                     myVlcControl.Pause();
-                    if (this.mainPlaylist != null)
-                        mainPlaylist.cur_pos_play = Next(mainPlaylist);
+                    flagPlaying = false;
+                   // if (this.mainPlaylist != null)
+                       // mainPlaylist.cur_pos_play = Next(mainPlaylist);
                 }
             }
             //totalTime.Text = string.Format("{0:00}:{1:00}:{2:00}",
@@ -327,21 +324,40 @@ namespace Alta_Media_Player
         /// <summary>
         /// ẩn thanh điều khiển
         /// </summary>
-        private void HideControl()
+        private void HideControl(int time = 5)
         {
+            Title_Layout.Visibility = Visibility.Visible;
+            ControlPlayer_Layout.Visibility = Visibility.Visible;
             if (WindowState == WindowState.Maximized)
             {
-                if (myVlcControl.IsPlaying)
+                if (time > 5)
                 {
-                    DoubleAnimation daHideControl = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(10));
-                    daHideControl.EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseOut };
-                    clock = daHideControl.CreateClock();
-                    Title_Layout.ApplyAnimationClock(OpacityProperty, clock);
-                    ControlPlayer_Layout.ApplyAnimationClock(OpacityProperty, clock);
+                    localThread = new Thread(localThreadRun);
+                    localThread.IsBackground = true;
+                    localThread.Start();
                 }
                 else
                 {
-                    this.VisibleControl();
+                    DoubleAnimation daHideControl = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(2));
+                    clock = daHideControl.CreateClock();
+                    daHideControl.EasingFunction = new PowerEase() { EasingMode = EasingMode.EaseOut };
+                    clock.Completed += (o, s) =>
+                    {
+                        Title_Layout.Visibility = Visibility.Hidden;
+                        ControlPlayer_Layout.Visibility = Visibility.Hidden;
+                        try
+                        {
+                            if (localThread != null && localThread.IsAlive)
+                                localThread.Abort();
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    };
+
+                    Title_Layout.ApplyAnimationClock(OpacityProperty, clock);
+                    ControlPlayer_Layout.ApplyAnimationClock(OpacityProperty, clock);
                 }
             }
             else
@@ -349,11 +365,24 @@ namespace Alta_Media_Player
                 this.VisibleControl();
             }
         }
+
+        private void localThreadRun(object obj)
+        {
+            while (true)
+            {
+                Thread.Sleep(10000);
+                if (clock != null)
+                    clock.Controller.Begin();
+                localThread.Abort();
+            }
+        }
         /// <summary>
         /// hàm hiện thanh điều khiển
         /// </summary>
         private void VisibleControl()
         {
+            Title_Layout.Visibility = Visibility.Visible;
+            ControlPlayer_Layout.Visibility = Visibility.Visible;
             try
             {
                 if (clock != null)
@@ -380,16 +409,27 @@ namespace Alta_Media_Player
 
         private void Changed_State_Event(object sender, MouseButtonEventArgs e)
         {
-            if (myVlcControl.IsPaused)
+            try
             {
-                myVlcControl.Play();
-                btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/media-pause.png")));
+                if (localThread != null && localThread.IsAlive)
+                    localThread.Abort();
             }
-            else if (myVlcControl.IsPlaying)
+            catch (Exception ex)
             {
-                myVlcControl.Pause();
-                btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/btn_play.png")));
+
             }
+            VisibleControl();
+            HideControl(15);
+            //if (myVlcControl.IsPaused)
+            //{
+            //    myVlcControl.Play();
+            //    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_pause.png")));
+            //}
+            //else if (myVlcControl.IsPlaying)
+            //{
+            //    myVlcControl.Pause();
+            //    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_play.png")));
+            //}
 
         }
 
@@ -399,12 +439,12 @@ namespace Alta_Media_Player
             if (WindowState.Maximized == this.WindowState)
             {
                 this.WindowState = WindowState.Normal;
-                btn_full_screen.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/full_icon.png")));
+                btn_full_screen.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_full_screen.png")));
             }
             else
             {
                 this.WindowState = WindowState.Maximized;
-                btn_full_screen.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/fullscreen_exit.png")));
+                btn_full_screen.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_return_from_full_screen.png")));
             }
             HideControl();
         }
@@ -421,7 +461,7 @@ namespace Alta_Media_Player
             myVlcControl.Media = new PathMedia(openFileDialog.FileName);
             myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
             myVlcControl.Play();
-            btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/media-pause.png")));
+            btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_pause.png")));
             FileInfo File_open = new FileInfo(openFileDialog.FileName);
             txt_alta_media_name.Text = File_open.Name;
         }
@@ -429,7 +469,6 @@ namespace Alta_Media_Player
         private void Open_btn_Click(object sender, RoutedEventArgs e)
         {
             myVlcControl.Stop();
-
             if (myVlcControl.Media != null)
             {
                 myVlcControl.Media.ParsedChanged -= MediaOnParsedChanged;
@@ -453,12 +492,12 @@ namespace Alta_Media_Player
             if (myVlcControl.AudioProperties.IsMute)
             {
                 myVlcControl.AudioProperties.IsMute = false;
-                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/sound.png")));
+                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_volume_on.png")));
             }
             else
             {
                 myVlcControl.AudioProperties.IsMute = true;
-                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/sound_mute.png")));
+                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_volume_muted.png")));
             }
 
         }
@@ -470,16 +509,13 @@ namespace Alta_Media_Player
             {
                 if (myVlcControl.IsPlaying)
                 {
-                    //myVlcStreaming.Pause();
                     myVlcControl.Pause();
-                    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/btn_play.png")));
-
+                    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_play.png")));
                 }
                 else
                 {
                     myVlcControl.Play();
-                    // myVlcStreaming.Play();
-                    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/media-pause.png")));
+                    btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_pause.png")));
                 }
             }
 
@@ -488,11 +524,12 @@ namespace Alta_Media_Player
         private void btn_Click_Stop(object sender, RoutedEventArgs e)
         {
             myVlcControl.Stop();
-            //  myVlcStreaming.Stop();
-            btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/btn_play.png")));
+            flagPlaying = true;           
+            btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_play.png")));
             barTimeSeek.Value = 0;
-            //   if (mediaClock != null && mediaClock.CurrentState != ClockState.Stopped)
-            //  mediaClock.Controller.Stop();
+            if (mediaClock != null && mediaClock.CurrentState != ClockState.Stopped)
+                mediaClock.Controller.Stop();
+          
         }
 
         /// <summary>
@@ -553,12 +590,12 @@ namespace Alta_Media_Player
             if (Convert.ToInt32(alta_volume.Value) <= 0)
             {
                 myVlcControl.AudioProperties.IsMute = true;
-                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/sound_mute.png")));
+                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_volume_muted.png")));
             }
             else
             {
                 myVlcControl.AudioProperties.IsMute = false;
-                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Images/sound.png")));
+                btn_mute.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_volume_on.png")));
             }
         }
 
@@ -569,7 +606,6 @@ namespace Alta_Media_Player
                 if (mediaClock != null && mediaClock.CurrentState != ClockState.Stopped)
                     mediaClock.Controller.Stop();
                 mainPlaylist.cur_pos_play = Next(mainPlaylist);
-
             }
         }
 
@@ -606,48 +642,7 @@ namespace Alta_Media_Player
             mainClock = tmp.CreateClock();
             mainClock.CurrentTimeInvalidated += mainClock_CurrentTimeInvalidated;
             demoTxt.ApplyAnimationClock(OpacityProperty, clock);
-        }
-        //public int checkTime()
-        //{
-        //    int count = this.Schedule.alta_details_schedule.Count;
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        if (this.Schedule.alta_details_schedule[i].checkTime(DateTime.Now.Minute + DateTime.Now.Hour * 60))
-        //        {
-        //            return i;
-        //        }
-        //    }
-        //    return -1;
-        //}
-        //private void LoadMedia(List<alta_class_playlist_details> list)
-        //{
-        //    int count = list.Count;
-        //    if (count > 0)
-        //    {
-        //        for (int i = 0; i < count; i++)
-        //        {
-        //            if (list[i].alta_media.alta_media_type.alta_id == 1)
-        //            {
-        //                String location = alta_class_ftp.downLoadFile(list[i].alta_media.alta_url);
-        //                MediaBase media = new LocationMedia(location);
-        //              //y  media.AddOption(":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:rtp{sdp=rtsp://:8554/demo} :sout-all :sout-keep");
-
-        //                myVlcControl.Medias.Add(media);
-        //            }
-        //            else if (list[i].alta_media.alta_media_type.alta_id == 2)
-        //            {
-        //                MediaBase media = new PathMedia(list[i].alta_media.alta_url);
-        //             //   media.AddOption(":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:rtp{sdp=rtsp://:8554/demo} :sout-all :sout-keep");
-        //                myVlcControl.Medias.Add(media);
-        //            }
-        //            else
-        //            {
-
-        //            }
-        //        }
-        //    }
-        //}
-
+        }     
         public alta_playlist_player LoadMediaToPlaylist(List<alta_class_playlist_details> list_media)
         {
             alta_playlist_player playlist = new alta_playlist_player();
@@ -663,7 +658,6 @@ namespace Alta_Media_Player
                     {
                         tmp.type = 1;
                         String location = alta_class_ftp.downLoadFile(list_media[i].alta_media.alta_url);
-
                         tmp.Url = location;
                         tmp.name = list_media[i].alta_media.alta_name;
                     }
@@ -681,136 +675,82 @@ namespace Alta_Media_Player
                     }
                     DateTime time = list_media[i].alta_time_play;
                     tmp.TimePlay = time.Hour * 360 + time.Minute * 60 + time.Second;
+                    tmp.ID = list_media[i].alta_media.alta_id;
+                    tmp.TimeBeginPlay = list_media[i].alta_time_play;
+                    tmp.TimeEndPlay = list_media[i].alta_time_end;
                     playlist.media.Add(tmp);
                 }
             }
+            if (playlist.Compare(this.mainPlaylist))
+                return this.mainPlaylist;
             return playlist;
         }
-
-        //public void LoadMedia(List<alta_class_media> list_media)
-        //{
-        //    int count = list_media.Count;
-        //    if (count > 0)
-        //    {
-        //        for (int i = 0; i < count; i++)
-        //        {
-        //            if (list_media[i].alta_media_type.alta_id == 1)
-        //            {
-        //                String location = alta_class_ftp.downLoadFile(list_media[i].alta_url);
-        //                myVlcControl.Medias.Add(new LocationMedia(location));
-        //            }
-        //            else if (list_media[i].alta_media_type.alta_id == 2)
-        //            {
-        //                myVlcControl.Medias.Add(new PathMedia(list_media[i].alta_url));
-        //            }
-        //            else
-        //            {
-
-        //            }
-        //        }
-        //    }
-        //}
-
-        /// <summary>
-        /// phát media 
-        /// </summary>
-        /// <param name="media">thông tin media</param>
-        public void playMedia(alta_media_in_player media)
-        {
-            if (media.TimePlay > 0)
-            {
-                flagTiming = true;
-                TimeSpan time = new TimeSpan(0, 0, media.TimePlay);
-                DoubleAnimation daPlay = new DoubleAnimation(1, 1, time);
-                mediaClock = daPlay.CreateClock();
-                mediaClock.Completed += (s, a) =>
-                {
-                    flagTiming = false;
-                    myVlcControl.Stop();
-                    if (this.mainPlaylist != null)
-                        this.mainPlaylist.cur_pos_play = Next(this.mainPlaylist);
-                };
-            }
-            else
-            {
-                flagTiming = false;
-            }
-
-            if (media.isCamera)
-            {
-                MediaBase tmpMedia = new LocationMedia(media.Url);
-                myVlcControl.Media = tmpMedia;
-                flag_camera_media = true;
-            }
-            else if (media.isVideo)
-            {
-                MediaBase tmpMedia = new PathMedia(media.Url);
-                //tmpMedia.AddOption(output);
-                // tmpMedia.AddOption(":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:rtp{sdp=rtsp://:8554/demo} :sout-keep");
-                myVlcControl.Media = new PathMedia(media.Url);
-                myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
-                flag_camera_media = false;
-            }
-            txt_alta_media_name.Text = media.name;
-            //  myVlcStreaming.Play();
-            //  myVlcStreaming.AudioProperties.IsMute = true;
-            // myVlcControl.Play();
-        }
+     
+      
         /// <summary>
         /// phát media 
         /// </summary>
         /// <param name="media">vitri media</param>
         public void playMedia(int pos)
         {
+            flagPlaying = true;
             if (this.mainPlaylist.Count < pos || pos < 0 || this.mainPlaylist.Count <= 0)
+            {
+                flagPlaying = false;
                 return;
+            }
+           // this.Tcp_Server.se           
             alta_media_in_player media = new alta_media_in_player();
             media = this.mainPlaylist.media[pos];
-            if (media.TimePlay > 0)
-            {
-                flagTiming = true;
-                DoubleAnimation daPlay = new DoubleAnimation(1, 1, new TimeSpan(0, 0, media.TimePlay));
-                mediaClock = daPlay.CreateClock();
-                mediaClock.Completed += (s, a) =>
-                {
-                    flagTiming = false;
-                    myVlcControl.Stop();
-                    if (this.mainPlaylist != null)
-                        this.mainPlaylist.cur_pos_play = Next(this.mainPlaylist);
-                };
-            }
-            else
-            {
-                flagTiming = false;
-            }
-
+            this.mainPlaylist.cur_pos_play = pos;
+            this.Tcp_Server.SendMsg("PLAY|"+media.ID+"_"+media.name);
+            //if (media.TimePlay > 0)
+            //{
+            //    if (mediaClock != null)
+            //    {
+            //        mediaClock.Controller.Remove();
+            //        mediaClock = null;
+            //    }
+            //    flagTiming = true;
+            //    DoubleAnimation daPlay = new DoubleAnimation(1, 1, new TimeSpan(0, 0, media.TimePlay));
+            //    mediaClock = daPlay.CreateClock();
+            //    mediaClock.Completed += (s, a) =>
+            //    {
+            //        flagTiming = false;
+            //        myVlcControl.Stop();
+            //        if (this.mainPlaylist != null)
+            //            this.mainPlaylist.cur_pos_play = Next(this.mainPlaylist);
+            //    };
+            //}
+            //else
+            //{
+            //    flagTiming = false;
+            //}
+            myVlcControl.Stop();
             if (media.isCamera)
             {
-                myVlcControl.Stop();
-                MediaBase tmpMedia = new LocationMedia(media.Url);
-                // tmpMedia.AddOption(output);
-                //    myVlcStreaming.Media = tmpMedia;
-                // tmpMedia.AddOption(output);
-                myVlcControl.Media = new LocationMedia(media.Url);
-                
+                MediaBase tmpMedia = new LocationMedia(media.Url);               
+                myVlcControl.Media = tmpMedia;
                 flag_camera_media = true;
             }
             else if (media.isVideo)
             {
                 MediaBase tmpMedia = new PathMedia(media.Url);
-                //   tmpMedia.AddOption(output);
-                //  myVlcStreaming.Media = tmpMedia;
                 myVlcControl.Media = tmpMedia;
                 myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
                 flag_camera_media = false;
             }
+           
             Tcp_Server.sendImage(media.name + "|" + media.ftpUrl);
             txt_alta_media_name.Text = media.name;
+            btn_play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Alta_Media_Player;component/Asset/Themes/ic_action_pause.png")));
             myVlcControl.Play();
         }
 
         private int Next(alta_playlist_player alta_playlist)
         {
+            if(this.mediaClock!=null)
+                this.mediaClock.Controller.Stop();
             if (alta_playlist.cur_pos_play + 1 < alta_playlist.Count)
             {
                 playMedia(alta_playlist.cur_pos_play + 1);
@@ -829,6 +769,8 @@ namespace Alta_Media_Player
         /// <returns>pos media</returns>
         public int Back(alta_playlist_player plan)
         {
+            if (this.mediaClock != null)
+                this.mediaClock.Controller.Stop();
             if (plan.cur_pos_play - 1 > 0)
             {
                 playMedia(plan.cur_pos_play - 1);
@@ -847,20 +789,62 @@ namespace Alta_Media_Player
         /// <param name="e"></param>
         void mainClock_CurrentTimeInvalidated(object sender, EventArgs e)
         {
-            if (this.Schedule != null && this.Schedule.alta_details_schedule != null && this.Schedule.alta_details_schedule.Count > 0 && !flagPlaying)
+            if (this.mainPlaylist != null && this.mainPlaylist.Count > 0)
             {
-
+                int count=this.mainPlaylist.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    alta_media_in_player media = this.mainPlaylist.media[i];
+                    if (media.TimeBeginPlay.TimeOfDay <= DateTime.Now.TimeOfDay && media.TimeEndPlay.TimeOfDay >= DateTime.Now.TimeOfDay )
+                    {
+                        //this.mainPlaylist.cur_pos_play = i;
+                        if(!this.flagPlaying || this.mainPlaylist.cur_pos_play!=i)
+                            playMedia(i);
+                    }
+                    else if (this.mainPlaylist.cur_pos_play==i)
+                    {
+                        myVlcControl.Stop();
+                        this.mainPlaylist.cur_pos_play = -1;
+                    }
+                }
+            }
+            if (this.Schedule != null && this.Schedule.alta_details_schedule != null && this.Schedule.alta_details_schedule.Count > 0)
+            {
+                lb_count.Content = "count: " + countDemo;                
                 flag_play_local = false;
-                flagPlaying = true;
-                this.mainPlaylist = LoadMediaToPlaylist(this.Schedule.alta_details_schedule[0].alta_playlist.alta_details);
-                playMedia(0);
-
+                int curPosPlay = this.mainPlaylist.cur_pos_play;
+                if (!myVlcControl.IsPlaying)
+                {
+                    countDemo++;
+                    if(countDemo==1)
+                        this.mainPlaylist = LoadMediaToPlaylist(this.Schedule.alta_details_schedule[0].alta_playlist.alta_details);
+                    if (countDemo > 1000)
+                        countDemo = 0;
+                }
+                else
+                {
+                    countDemo = 0;
+                }
+                if (!flagPlaying)
+                {
+                    //this.mainPlaylist.cur_pos_play = 0;
+                   // playMedia(0);
+                }
+                else
+                {
+                    this.mainPlaylist.cur_pos_play = curPosPlay;
+                }
             }
             else
             {
 
             }
-            if (Tcp_Server.adminControl == _controlVLC._CONTROL_PLAY)
+            if (Tcp_Server.adminControl == _controlVLC._CONTROL_OFF)
+            {
+                Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;                
+                this.Close();                
+            }
+            else if (Tcp_Server.adminControl == _controlVLC._CONTROL_PLAY)
             {
                 myVlcControl.Media.ParsedChanged += MediaOnParsedChanged;
                 myVlcControl.Play();
@@ -876,16 +860,16 @@ namespace Alta_Media_Player
                 myVlcControl.Stop();
                 Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
             }
-            else if (Tcp_Server.adminControl == _controlVLC._CONTROL_NEXT)
-            {
-                this.mainPlaylist.cur_pos_play = Next(mainPlaylist);
-                Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
-            }
-            else if (Tcp_Server.adminControl == _controlVLC._CONTROL_BACK)
-            {
-                this.mainPlaylist.cur_pos_play = Back(mainPlaylist);
-                Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
-            }
+            //else if (Tcp_Server.adminControl == _controlVLC._CONTROL_NEXT)
+            //{
+            //    this.mainPlaylist.cur_pos_play = Next(mainPlaylist);
+            //    Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
+            //}
+            //else if (Tcp_Server.adminControl == _controlVLC._CONTROL_BACK)
+            //{
+            //    this.mainPlaylist.cur_pos_play = Back(mainPlaylist);
+            //    Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
+            //}
             else if (Tcp_Server.adminControl == _controlVLC._CONTROL_ABORT_USER)
             {
                 Tcp_Server.flag_login_user = false;
@@ -905,7 +889,8 @@ namespace Alta_Media_Player
                     // myVlcControl.Pause();
                     // myVlcControl.Media.AddOption(":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:rtp{sdp=rtsp://:8554/demo} :sout-all :sout-keep");
                     // myVlcControl.Play();
-
+                    
+                   
                 }
                 Tcp_Server.adminControl = _controlVLC._CONTROL_FREE;
             }
@@ -925,16 +910,16 @@ namespace Alta_Media_Player
                 myVlcControl.Stop();
                 Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
             }
-            else if (Tcp_Server.dataControl == _controlVLC._CONTROL_NEXT)
-            {
-                this.mainPlaylist.cur_pos_play = Next(mainPlaylist);
-                Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
-            }
-            else if (Tcp_Server.dataControl == _controlVLC._CONTROL_BACK)
-            {
-                this.mainPlaylist.cur_pos_play = Back(mainPlaylist);
-                Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
-            }
+            //else if (Tcp_Server.dataControl == _controlVLC._CONTROL_NEXT)
+            //{
+            //    this.mainPlaylist.cur_pos_play = Next(mainPlaylist);
+            //    Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
+            //}
+            //else if (Tcp_Server.dataControl == _controlVLC._CONTROL_BACK)
+            //{
+            //    this.mainPlaylist.cur_pos_play = Back(mainPlaylist);
+            //    Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
+            //}
             else if (Tcp_Server.dataControl == _controlVLC._CONTROL_SCREEN)
             {
                 if (myVlcControl.IsPaused || myVlcControl.IsPlaying)
@@ -947,11 +932,16 @@ namespace Alta_Media_Player
             }
             else if (Tcp_Server.dataControl == _controlVLC._CONTROL_STREAM)
             {
+                if (mediaClock != null)
+                {
+                    mediaClock.Controller.Remove();
+                    mediaClock = null;
+                }
                 myVlcControl.Stop();
                 if (mediaClock != null)
                     mediaClock.Controller.Stop();
                 Thread.Sleep(10000);
-                MediaBase tmpMedia = new LocationMedia("rtsp://" + Tcp_Server.ipHostStream + ":8554/demo");                
+                MediaBase tmpMedia = new LocationMedia("rtsp://" + Tcp_Server.ipHostStream + ":8554/demo");
                 myVlcControl.Media = tmpMedia;
                 myVlcControl.Play();
                 Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
@@ -961,7 +951,8 @@ namespace Alta_Media_Player
             {
                 myVlcControl.Stop();
                 this.mainPlaylist.cur_pos_play = 0;
-                playMedia(0);
+                Start();
+               // playMedia(0);
                 Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
             }
 
@@ -979,8 +970,50 @@ namespace Alta_Media_Player
         public bool flagTiming { get; set; }
         public AnimationClock mediaClock { get; set; }
         public bool flag_camera_media { get; set; }
-
-
         public bool flag_send_image { get; set; }
+        private void WindowResize(object sender, SizeChangedEventArgs e)
+        {
+            fixResoulution();
+        }
+        private void fixResoulution()
+        {
+            CommonUtilities.width = this.Width;
+            CommonUtilities.height = this.Height;
+            Size scale = CommonUtilities.getScaleSize();
+            ScaleTransform s = new ScaleTransform(scale.Width, scale.Height);
+            this.MainLayout.RenderTransform = s;
+        }
+        
+        private void KeyPressControl(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    if (this.WindowState == WindowState.Maximized)
+                    {
+                        this.WindowState = WindowState.Normal;
+                        try
+                        {
+                            if (localThread != null && localThread.IsAlive)
+                                localThread.Abort();
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        VisibleControl();
+                    }
+                    break;
+                case Key.Space:
+                    if (myVlcControl.IsPlaying)
+                        myVlcControl.Pause();
+                    else if (myVlcControl.IsPaused)
+                        myVlcControl.Play();
+                    break;
+                default:
+                    break;
+
+            }
+        }
     }
 }

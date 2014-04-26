@@ -26,7 +26,7 @@ namespace Alta_Media_Manager.Alta_view.Class
                 using (MySqlConnection conn = new MySqlConnection(CommonUtilities.config.getConnectionString()))
                 {
                     conn.Open();
-                    string _query = "SELECT `schedules_details_id`, `schedules_id`, `plan_id`, `user_id`, `termiral_id`, `time_play`,`time_end` FROM `am_schedules_details` WHERE  `schedules_id`=@schedule_id and  DATE_FORMAT( time_play,  '%Y-%m-%d' )=DATE_FORMAT( @time_play,'%Y-%m-%d')";
+                    string _query = "SELECT `schedules_details_id`, `schedules_id`, `plan_id`, `user_id`, `termiral_id`, `time_play`,`time_end` FROM `am_schedules_details` WHERE  `schedules_id`=@schedule_id and  DATE_FORMAT( time_play, '%Y-%m-%d' )<=DATE_FORMAT( @time_play,'%Y-%m-%d') and DATE_FORMAT( time_end, '%Y-%m-%d' )>=DATE_FORMAT( @time_play,'%Y-%m-%d')";
                     using (MySqlCommand cmd = new MySqlCommand(_query, conn))
                     {
                         cmd.Parameters.AddWithValue("@schedule_id", this.alta_id);

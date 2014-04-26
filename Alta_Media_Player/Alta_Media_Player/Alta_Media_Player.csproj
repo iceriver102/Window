@@ -66,6 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,6 +94,9 @@
     <Compile Include="Class\CommonUtilities.cs" />
     <Compile Include="Class\Configuration.cs" />
     <Compile Include="Class\FileOperations.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,6 +120,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,26 +131,54 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Asset\Images\sound_mute.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Asset\Images\btn_back.png" />
-    <Resource Include="Asset\Images\btn_next.png" />
     <Resource Include="Asset\Images\btn_open.png" />
-    <Resource Include="Asset\Images\btn_play.png" />
-    <Resource Include="Asset\Images\btn_stop.png" />
     <Resource Include="Asset\Images\Close_btn.png" />
-    <Resource Include="Asset\Images\fullscreen_exit.png" />
-    <Resource Include="Asset\Images\full_icon.png" />
     <Resource Include="Asset\Images\icon_close.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Asset\Images\sound.png" />
+    <Resource Include="Asset\Themes\ic_action_full_screen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Asset\Images\media-pause.png" />
+    <Resource Include="Asset\Themes\ic_action_volume_muted.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_volume_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_return_from_full_screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\txt_pass.png" />
+    <Resource Include="Asset\Themes\txt_username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\btn_hover.png" />
+    <Resource Include="Asset\Themes\btn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Themes\ic_action_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Images\bg_images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Images\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

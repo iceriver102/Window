@@ -23,9 +23,8 @@ namespace Alta_Media_Manager.Alta_view.Class
         public bool alta_status { get; set; }
         private int user_id;
         public alta_class_user alta_user { get { return mysql_alta_helpper.getUser(user_id); } set { user_id = value.alta_id; } }
-        public List<alta_class_playlist_details> alta_details { get { return this.LoadDetails() ;} }
+        public List<alta_class_playlist_details> alta_details { get { return this.LoadDetails(); } }
         public List<alta_class_termiral> list_terminal { get; set; }
-
 
         private List<alta_class_playlist_details> LoadDetails()
         {
@@ -36,7 +35,7 @@ namespace Alta_Media_Manager.Alta_view.Class
                 using (MySqlConnection conn = new MySqlConnection(CommonUtilities.config.getConnectionString()))
                 {
                     conn.Open();
-                    string insert_query = "SELECT `detail_plan_id`, `plan_id`, `media_id`, `time_play`, `time_create` FROM `am_plan_details` WHERE `plan_id`=@plan_id";
+                    string insert_query = "SELECT `detail_plan_id`, `plan_id`, `media_id`, `time_play`, `time_create`,`time_end` FROM `am_plan_details` WHERE `plan_id`=@plan_id";
                     using (MySqlCommand cmd = new MySqlCommand(insert_query, conn))
                     {
                         cmd.Parameters.AddWithValue("@plan_id", this.alta_id);
@@ -78,7 +77,6 @@ namespace Alta_Media_Manager.Alta_view.Class
                             using (MySqlDataReader reader = cmd.ExecuteReader())
                             {
                                 this.list_terminal = mysql_alta_helpper.getListTerminal(reader);
-
                             }
                         }
                     }
@@ -100,38 +98,21 @@ namespace Alta_Media_Manager.Alta_view.Class
     {
         public int alta_id { get; set; }
         public alta_class_playlist alta_playlist { get; set; }
-        public DateTime alta_time_play { get; set; }
-        public DateTime alta_time_create { get; set; }
-        public alta_class_media alta_media { get; set; }
-
-        public void LoadMedia()
+        private DateTime _time_play;
+        public DateTime alta_time_play { get { return _time_play; } set { _time_play = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hour, value.Minute, 0); } }
+        private DateTime _timeend;
+        public DateTime alta_time_end { get { return _timeend; } set { _timeend = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hour, value.Minute, 59); } }
+        public DateTime? alta_time_create { get; set; }
+        private int media_id;
+        public alta_class_media alta_media { get { return this.getMedia(); } set { media_id = value.alta_id; } }
+        private alta_class_media getMedia()
         {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(CommonUtilities.config.getConnectionString()))
-                {
-                    conn.Open();
-                    string insert_query = "SELECT `detail_plan_id`, `plan_id`, `media_id`, `time_play`, `time_create` FROM `am_plan_details` WHERE `plan_id`=@plan_id";
-                    using (MySqlCommand cmd = new MySqlCommand(insert_query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@plan_id", this.alta_id);
-                        var tmp = cmd.ExecuteScalar();
-                        if (Convert.ToInt32(tmp) > 0)
-                        {
-                            using (MySqlDataReader reader = cmd.ExecuteReader())
-                            {
-                                this.alta_media = mysql_alta_helpper.getMedia(reader);
-                            }
-                        }
-                    }
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
+            alta_class_media media = new alta_class_media();
+            if (this.media_id <= 0)
+                return null;
+            media = mysql_alta_helpper.getMedia(this.media_id);
+            return media;
         }
-
     }
 }
+

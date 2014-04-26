@@ -18,7 +18,6 @@ namespace Alta_Media_Manager.Alta_net
         TcpListener AdminTCP;
         TcpListener requestTCP;
         TcpClient client;
-
         public Thread UserReq;
 
         private Thread UserThread;
@@ -29,15 +28,15 @@ namespace Alta_Media_Manager.Alta_net
         /// <summary>
         /// 
         /// </summary>
-        public int userControlFlag;
+        public _controlVLC userControlFlag;
         /// <summary>
         /// 
         /// </summary>
-        public int requestControl;
+        public _controlVLC requestControl;
         /// <summary>
         /// Flag Control từ admin panel
         /// </summary>
-        public int dataControl;
+        public _controlVLC dataControl;
         /// <summary>
         /// Stream server 
         /// </summary>

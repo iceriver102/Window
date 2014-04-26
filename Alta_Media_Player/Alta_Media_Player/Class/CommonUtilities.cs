@@ -13,8 +13,9 @@ namespace Alta_Media_Manager.Class
 {
     public static class CommonUtilities
     {
-        public static double D_height = 768;
-        public static double D_width = 1366;
+        //Height="600" Width="1067"
+        public static double D_height = 782;
+        public static double D_width = 1390;
         public static double height;
         public static double width;
         public static Configuration config = new Configuration();

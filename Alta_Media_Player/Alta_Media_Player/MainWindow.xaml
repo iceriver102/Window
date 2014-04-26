@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:Wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf" 
-        Title="MainWindow" Height="600" Width="1067" AllowsTransparency="True" WindowStyle="None" WindowState="Normal" Background="Transparent" FontFamily="Verdana" Loaded="WinDow_Loaded">
+        Title="MainWindow" Height="600" Width="1067" AllowsTransparency="True" WindowStyle="None" WindowState="Normal" Background="White" FontFamily="Verdana" Loaded="WinDow_Loaded" ResizeMode="CanResizeWithGrip" SizeChanged="WindowResize" KeyUp="KeyPressControl">
     <Window.Resources>
         <Style x:Key="CustomThumbForSlider" TargetType="{x:Type Thumb}">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -56,7 +56,8 @@
             </Border>
         </ControlTemplate>
     </Window.Resources>
-    <Border Background="#CCA4A3A3" BorderBrush="White" BorderThickness="1" CornerRadius="3" >
+    <Canvas x:Name="MainLayout" Height="782" Width="1390">
+        <Border Background="#CCA4A3A3" BorderBrush="White" BorderThickness="1" CornerRadius="3" Height="782" Width="1390" Canvas.Left="0" Canvas.Top="0" >
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="33"/>
@@ -98,17 +99,17 @@
                 <ProgressBar x:Name="barTimeSeek" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Top" Height="6" Background="Black" Margin="30,0" Foreground="White" MouseLeftButtonDown="ProgressBarChange"  PreviewMouseLeftButtonDown="SliderMouseLeftButtonDown" PreviewMouseLeftButtonUp="SliderMouseLeftButtonUp" Cursor="Hand" />
                 <Button x:Name="btn_play" Content="" Template="{DynamicResource btnTmpl}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32" Grid.Column="1" Height="32" Grid.Row="1" BorderBrush="{x:Null}" Click="btn_Play_Event" >
                     <Button.Background>
-                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Images/btn_play.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Themes/ic_action_play.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" Template="{DynamicResource btnTmpl}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="210,0,100,0" Grid.Column="1" Height="24" Width="24" Grid.Row="1" BorderBrush="{x:Null}" Click="Vlc_btn_next_Click" >
                     <Button.Background>
-                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Images/btn_next.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Themes/ic_action_next.png"/>
                     </Button.Background>
                 </Button>
                 <Button Content="" Template="{DynamicResource btnTmpl}" Grid.Column="1" HorizontalAlignment="Center" Height="24" Grid.Row="1" VerticalAlignment="Center" Width="24" BorderBrush="{x:Null}" Margin="100,0,210,0" Click="vlc_btn_back_click">
                     <Button.Background>
-                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Images/btn_back.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="Asset/Themes/ic_action_previous.png"/>
                     </Button.Background>
                 </Button>
                
@@ -119,12 +120,12 @@
                 </Button>
                 <Button  Grid.Column="1" Template="{DynamicResource btnTmpl}" Height="32" Width="32" Grid.Row="1" BorderBrush="{x:Null}" Margin="294,0,29,0" Click="btn_Click_Stop">
                     <Button.Background>
-                        <ImageBrush ImageSource="Asset/Images/btn_stop.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="Asset/Themes/ic_action_stop.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
                 <Button x:Name="btn_full_screen" VerticalAlignment="Center" HorizontalAlignment="Right" Content="" Grid.Column="2" Margin="0,0,30,0" Height="22" Width="22" Grid.Row="1" Template="{DynamicResource btnTmpl}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="WindowCHange_State_btn_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="Asset/Images/full_icon.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="Asset/Themes/ic_action_full_screen.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
                 <TextBlock x:Name="alta_txt_curTime" Grid.Column="2" HorizontalAlignment="Center" Margin="10,0,200,0" Grid.Row="1" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Center" Foreground="#FFE8E5E5"/>
@@ -133,7 +134,7 @@
                     <Button x:Name="btn_mute" Content="" HorizontalAlignment="Left" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="32" Height="32" BorderBrush="{x:Null}" Template="{DynamicResource btnTmpl}" Click="btn_Click_Mute">
                     
                     <Button.Background>
-                        <ImageBrush ImageSource="Asset/Images/sound.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="Asset/Themes/ic_action_volume_on.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
                     <Slider x:Name="alta_volume"   HorizontalAlignment="Left" Margin="0"  VerticalAlignment="Center" Width="100" Background="#00000000" Maximum="100" Minimum="0" Value="100" ValueChanged="Volume_Change_Event">
@@ -143,7 +144,9 @@
 
             </Grid>
             <TextBox x:Name="demoTxt" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="10,457,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="789"/>
+            <Label x:Name="lb_count" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="161"/>
 
-        </Grid>
+            </Grid>
     </Border>
+    </Canvas>
 </Window>

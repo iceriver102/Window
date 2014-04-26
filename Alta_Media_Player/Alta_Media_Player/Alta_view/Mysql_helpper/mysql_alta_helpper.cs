@@ -29,6 +29,7 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
         private static String ALTA_TERMIRAL_IP = "termiral_ip";
         private static String ALTA_TERMIRAL_CONTENT = "termiral_content";
         private static String ALTA_TERMIRAL_STATUS = "termiral_status";
+        private static String ALTA_TERMIRAL_PASS = "termiral_pass";
         #endregion
         #region colum User table
         private static String ALTA_USER_ID = "user_id";
@@ -54,7 +55,6 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
         private static String ALTA_MEDIA_NAME = "media_name";
         private static String ALTA_MEDIA_URL = "media_url";
         private static String ALTA_MEDIA_CONTENT = "media_content";
-
         private static String ALTA_MEDIA_DATE = "media_date";
         private static String ALTA_MEDIA_STATUS = "media_status";
 
@@ -67,13 +67,15 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
         private static String ALTA_PLAN_DATE_END = "plan_date_end";
         private static String ALTA_PLAN_STATUS = "plan_status";
         private static String ALTA_PLAN_CREATE = "plan_time_create";
-        private static String ALTA_PLAN_CONTENT = "plan_content";
+        private static String ALTA_PLAN_CONTENT = "plan_content";     
+        
         #endregion
 
         #region colum plan detais table
         private static String ALTA_PLAN_DETAILS_ID = "detail_plan_id";
         private static String ALTA_PLAN_DETAILS_TIME_PLAY = "time_play";
         private static String ALTA_PLAN_DETAILS_TIME_CREATE = "time_create";
+        private static String ALTA_PLAN_DETAILS_TIME_END = "time_end";
         #endregion
         private static int getCount(String table, String where, MySqlParameterCollection par)
         {
@@ -461,12 +463,17 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
                     alta_class_playlist playlist = new alta_class_playlist();
                     playlist.alta_id = reader.GetInt32(ALTA_PLAN_ID);
                     tmp.alta_playlist = playlist;
-
                     tmp.alta_time_play = reader.GetDateTime(ALTA_PLAN_DETAILS_TIME_PLAY);
-
-                    tmp.alta_time_create = reader.GetDateTime(ALTA_PLAN_DETAILS_TIME_CREATE);
-                    if (flag)
-                        tmp.LoadMedia();
+                    tmp.alta_time_end = reader.GetDateTime(ALTA_PLAN_DETAILS_TIME_END);
+                    try
+                    {
+                        tmp.alta_time_create = reader.GetDateTime(ALTA_PLAN_DETAILS_TIME_CREATE);
+                    }
+                    catch (Exception)
+                    {
+                        tmp.alta_time_create = null;
+                    }
+                    
                     list_details.Add(tmp);
 
                 }
@@ -748,7 +755,7 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
                     {
                         tmp.alta_content = "";
                     }
-
+                    tmp.alta_pass = reader.GetString(ALTA_TERMIRAL_PASS);
                     // list_playlist.Add(tmp);
 
                 }
@@ -764,7 +771,7 @@ namespace Alta_Media_Manager.Alta_view.Mysql_helpper
 
                 if (!reader.IsDBNull(0))
                 {
-                    tmp.alta_id = reader.GetInt32(ALTA_TERMIRAL_ID);
+                    tmp.alta_id = reader.GetInt32(ALTA_SCHEDULE_ID);
                     // if (!reader.IsDBNull(1))
                     alta_class_user user = new alta_class_user();
                     user.alta_id = reader.GetInt32(ALTA_USER_ID);
