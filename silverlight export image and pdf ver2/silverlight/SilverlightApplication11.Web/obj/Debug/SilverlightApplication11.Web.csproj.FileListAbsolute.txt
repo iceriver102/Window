@@ -1,0 +1,66 @@
+C:\Users\TriNguyen\documents\visual studio 2010\Projects\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\documents\visual studio 2010\Projects\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\documents\visual studio 2010\Projects\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\documents\visual studio 2010\Projects\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\documents\visual studio 2010\Projects\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\xampp\htdocs\quanlyled\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\xampp\htdocs\quanlyled\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\xampp\htdocs\quanlyled\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\xampp\htdocs\quanlyled\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\xampp\htdocs\quanlyled\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11172011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11172011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11172011\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11172011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11172011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11282011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11282011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\file\SilverlightApplication11 11282011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\file\SilverlightApplication11 11282011\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\file\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\file\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\file\SilverlightApplication11 11282011\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TAI.NGUYEN\Desktop\silverlightMinhtri\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TAI.NGUYEN\Desktop\silverlightMinhtri\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TAI.NGUYEN\Desktop\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TAI.NGUYEN\Desktop\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TAI.NGUYEN\Desktop\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+\\Media05\e\1Tri.Nguyen\silverlightMinhtri\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+\\Media05\e\1Tri.Nguyen\silverlightMinhtri\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+\\Media05\e\1Tri.Nguyen\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+\\Media05\e\1Tri.Nguyen\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+\\Media05\e\1Tri.Nguyen\silverlightMinhtri\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\silverligh_ne\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\silverligh_ne\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\TriNguyen\Desktop\silverligh_ne\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.csprojResolveAssemblyReference.cache
+C:\Users\TriNguyen\Desktop\silverligh_ne\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\TriNguyen\Desktop\silverligh_ne\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\led01\Desktop\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\led01\Desktop\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\led01\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\led01\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\led01\Desktop\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\led01\Documents\Visual Studio 2010\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\led01\Documents\Visual Studio 2010\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\led01\Documents\Visual Studio 2010\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\led01\Documents\Visual Studio 2010\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb
+C:\Users\led01\Documents\Visual Studio 2010\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.csprojResolveAssemblyReference.cache
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll.config
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.csprojResolveAssemblyReference.cache
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.dll
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\obj\Debug\SilverlightApplication11.Web.pdb

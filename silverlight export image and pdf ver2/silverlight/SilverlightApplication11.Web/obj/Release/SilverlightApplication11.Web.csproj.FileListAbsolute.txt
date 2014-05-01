@@ -1,0 +1,5 @@
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll.config
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.dll
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\bin\SilverlightApplication11.Web.pdb
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\obj\Release\SilverlightApplication11.Web.dll
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11.Web\obj\Release\SilverlightApplication11.Web.pdb

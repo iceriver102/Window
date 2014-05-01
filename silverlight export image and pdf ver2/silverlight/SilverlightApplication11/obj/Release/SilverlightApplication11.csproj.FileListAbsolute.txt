@@ -1,0 +1,3 @@
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11\obj\Release\App.g.cs
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11\obj\Release\MainPage.g.cs
+C:\Users\thanh_000\Desktop\silverlight export image and pdf ver2\silverlight\SilverlightApplication11\obj\Release\SilverlightApplication11.g.resources
