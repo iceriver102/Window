@@ -1,1 +1,1 @@
-c:\users\giang.phan\documents\visual studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\ChitietChamCongKithuat.Web.csproj,635248837091865412,Properties\AssemblyInfo.cs,
+C:\Users\thanh_000\Source\Repos\Window\ChitietChamCongKithuat\ChitietChamCongKithuat.Web\ChitietChamCongKithuat.Web.csproj,635329056672009773,Properties\AssemblyInfo.cs,

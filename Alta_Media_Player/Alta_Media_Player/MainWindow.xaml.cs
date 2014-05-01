@@ -789,7 +789,7 @@ namespace Alta_Media_Player
         /// <param name="e"></param>
         void mainClock_CurrentTimeInvalidated(object sender, EventArgs e)
         {
-            if (this.mainPlaylist != null && this.mainPlaylist.Count > 0)
+            if (this.mainPlaylist != null && this.mainPlaylist.Count > 0 && !flag_treaming)
             {
                 int count=this.mainPlaylist.Count;
                 for (int i = 0; i < count; i++)
@@ -941,6 +941,7 @@ namespace Alta_Media_Player
                 if (mediaClock != null)
                     mediaClock.Controller.Stop();
                 Thread.Sleep(10000);
+                flag_treaming = true;
                 MediaBase tmpMedia = new LocationMedia("rtsp://" + Tcp_Server.ipHostStream + ":8554/demo");
                 myVlcControl.Media = tmpMedia;
                 myVlcControl.Play();
@@ -952,6 +953,7 @@ namespace Alta_Media_Player
                 myVlcControl.Stop();
                 this.mainPlaylist.cur_pos_play = 0;
                 Start();
+                flag_treaming = false;
                // playMedia(0);
                 Tcp_Server.dataControl = _controlVLC._CONTROL_FREE;
             }
@@ -1015,5 +1017,7 @@ namespace Alta_Media_Player
 
             }
         }
+
+        public bool flag_treaming { get; set; }
     }
 }

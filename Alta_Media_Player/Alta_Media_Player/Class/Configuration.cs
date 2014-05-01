@@ -24,13 +24,13 @@ namespace Alta_Media_Manager.Class
         public String ConfigFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.data");
         //Attribute
 
-        public string MySql_server = "192.168.10.29";
+        public string MySql_server = "192.168.10.28";
         public string MySql_user = "root";
         public string MySql_pass = "roottest";
         public string MySql_database = "alta_mana_media";
         public string MySql_port = "3306";
         public string MySql_timeOut = "24";
-        public string Ftp_Server = "ftp://192.168.10.29";
+        public string Ftp_Server = "ftp://192.168.10.28";
         public string Ftp_user = "demo";
         public string Ftp_pass = "123";
         public string Ftp_port = "21";

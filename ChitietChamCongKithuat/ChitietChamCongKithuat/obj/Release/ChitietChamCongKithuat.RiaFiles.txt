@@ -1,2 +1,2 @@
-C:\Users\Giang.Phan\Documents\Visual Studio 2012\Projects\ChitietChamCongKithuat\ChitietChamCongKithuat
+C:\Users\thanh_000\Source\Repos\Window\ChitietChamCongKithuat\ChitietChamCongKithuat
 Generated_Code\ChitietChamCongKithuat.Web.g.cs

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Alta_Media_Manager.Alta_net.alta_class_net" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACAAAAAAAAAIEgAABAAAIIABBAAAAAABABACIA=</HashCode>
+      <FileName>Alta_net\alta_class_net.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_net.SocketControlClient" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAIAACAAQAAABAAEAIAAAAAAAA=</HashCode>
+      <FileName>Alta_net\alta_class_net.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_net._controlVLC" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQJQAAAAAAAAIBAAQAAAAAAEAEAAAAgAcAAAASAAAAA=</HashCode>
+      <FileName>Alta_net\alta_class_net.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_net.TCPListen" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASDhAgsAAAAgAUQJGIEBGAKACgACBAUAUIBRAMAQI=</HashCode>
+      <FileName>Alta_net\TCPListen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_ftp" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAEAAAAAAAAAAAIACAAAAABgAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_ftp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.SSLValidator" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_ftp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_media" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAIAAAgAAAAAAAAAAgAgAAAgAAACABAAgCACAAAAI=</HashCode>
+      <FileName>Alta_view\Class\alta_class_media.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_media_type" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_media.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_playlist" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACIAAgAAABAQAAAAEAAAAAAgACACAAAAgAAAAgAAg=</HashCode>
+      <FileName>Alta_view\Class\alta_class_playlist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_playlist_details" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAAAAAAAAAAgAAAgAAAAAAAAADAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_playlist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_schedules" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAACgAAAAQAAggCAABAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_schedules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_schedules_details" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAIggAAAiAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_schedules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_termiral" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAQAAAAAAIAAAAgAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_termiral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_user" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAAAAAAAAAAAAIAAAIEAgAAAABAAAAAAAAIAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_user.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Class.alta_class_user_type" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAgAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Class\alta_class_user.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Mysql_helpper.mysql_alta_helpper" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QwAAAEhAUBIIBQCAFgAABELFKVoEWSAoYwAggJoEUgg=</HashCode>
+      <FileName>Alta_view\Mysql_helpper\mysql_alta_helpper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Alta_view.Mysql_helpper.Mysql_Optimize_Class" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAIAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alta_view\Mysql_helpper\Mysql_Optimize_Class.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Player.App" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Player.MainWindow" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IwIFCyAAQOIIkwQAAAjBAgDCTEYKARgQEHACsBgQAkg=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Class.alta_media_in_player" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEABCAAAAAAACAAAAAAIAAAAAFAAAAGAAACAAAAIA=</HashCode>
+      <FileName>Class\alta_media_in_player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Class.alta_playlist_player" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAEQAAAAAAAAEAAAABAAAAAA=</HashCode>
+      <FileName>Class\alta_playlist_player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Class.CommonUtilities" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABCQAAQAAAIQAQAQAAAAAQAAAAABAAAAAEABgUEAgA=</HashCode>
+      <FileName>Class\CommonUtilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Class.Configuration" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAWgAAAAAAAgAqCAAAcCEAAAgABAAEQdAAgCAiQA=</HashCode>
+      <FileName>Class\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Manager.Class.FileOperations" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Class\FileOperations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Player.Properties.Resources" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alta_Media_Player.Properties.Settings" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
