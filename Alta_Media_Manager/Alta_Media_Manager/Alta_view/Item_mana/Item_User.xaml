@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.Item_mana.Item_User"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="360" FontFamily="Verdana" FontSize="12">
+    <Border Background="White" BorderBrush="#CC808080" BorderThickness="1" Padding="5,0" MouseEnter="Show_Action_Bar" MouseLeave="Hide_Action_Bar">
+        <Grid  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="73*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.Row="1" Source="/Alta_Media_Manager;component/Asset/Alta_Avatar/av_user.png" VerticalAlignment="Top" Height="86" />
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" x:Name="lb_full_name" Content="Label" HorizontalAlignment="Stretch" Margin="0" VerticalContentAlignment="Center" VerticalAlignment="Stretch" FontSize="16"/>
+            <Grid Grid.Column="1"  Grid.Row="1" Margin="5,0,0,0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="lb_user" Grid.Row="0" Content="Label" VerticalContentAlignment="Center"/>
+                <Label x:Name="lb_email" Grid.Row="1" Content="Label" VerticalContentAlignment="Center"/>
+                <Label x:Name="lb_type" Grid.Row="2" Content="Label" VerticalContentAlignment="Center"/>
+                <Label x:Name="lb_phone" Grid.Row="3" Content="Label" VerticalContentAlignment="Center"/>
+
+            </Grid>
+            <Grid x:Name="grid_action" Visibility="Visible" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Background="#FF000000" Margin="-5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnconnect" Grid.Column="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="btn_connect_click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_bluetooth_connected.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button x:Name="btn_lock" Grid.Column="1" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="btn_lock_click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_secure.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Grid.Column="2" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="btn_view_thietbi">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_bluetooth.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Grid.Column="3" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="View_Camra_btn_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_camera.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Grid.Column="4" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="btn_view_video_click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_slideshow.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Grid.Column="5" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="view_playlist_btn_click" HorizontalAlignment="Right" Margin="0,2,11,3" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_view_as_list.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnedit" Grid.Column="6" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Height="28" Width="28" Click="btn_Edit_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_edit.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button x:Name="btndelete" Grid.Column="8" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Width="28" Height="28" Click="btn_delete_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_remove.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnListUser"  Template="{DynamicResource btn_tmp}" BorderThickness="0" Grid.Column="7" Height="28" Width="28" BorderBrush="{x:Null}" Click="btn_view_list_user">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_brightness_auto.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+           
+        </Grid>
+    </Border>
+</UserControl>

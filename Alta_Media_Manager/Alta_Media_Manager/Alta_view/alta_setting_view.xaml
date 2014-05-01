@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.alta_setting_view"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="663" d:DesignWidth="1346" FontFamily="Verdana">
+    <Canvas Height="663" Width="1346">
+        <Grid Height="450" Width="900" Canvas.Top="106.5" Canvas.Left="223" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="5,0,5,100">
+                <Grid  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="#ffdcddde" >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button  Content="Lưu" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White" Template="{DynamicResource btnTmplNormal}" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="75" Height="28" Click="btn_save_streaming_click"  >
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_normal.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Border Background="Gray" BorderThickness="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" >
+                        <TextBlock TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="Cài Đặt Streaming Server" FontSize="14" FontWeight="Bold"/>
+                    </Border>
+                    <Label Content="Server IP:" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label Content="Port:" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="3"/>
+                    <Label Content="Buffer size: " HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
+                    <Label Content="Time out:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Center" />
+                    <TextBox x:Name="txt_st_name" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="2" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_st_port" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="4" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_st_buffer" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="6" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_timeout" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="8" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="5,0,5,0">
+                <Grid  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="#ffdcddde">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button  Content="Lưu" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White" Template="{DynamicResource btnTmplNormal}" HorizontalAlignment="Center" Grid.Row="13" VerticalAlignment="Center" Width="75" Height="28" Click="btn_click_ftp_server"  >
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_normal.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Border Background="Gray" BorderThickness="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" >
+                        <TextBlock TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="Cài Đặt FTP Server" FontSize="14" FontWeight="Bold"/>
+                    </Border>
+                    <Label Content="Server IP:" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label Content="Port:" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="3"/>
+                    <Label Content="User:" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
+                    <Label Content="Pass:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Center"/>
+                    <Label Content="Time out:" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center"/>
+                    <Label Content="Ftp root directory:" HorizontalAlignment="Left"  Grid.Row="11" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txt_ftp_ip" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="2" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_ftp_port" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="4" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_ftp_user" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="6" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <PasswordBox x:Name="txt_ftp_pass" HorizontalAlignment="Stretch" Height="26" Padding="10,5" Grid.Row="8" VerticalAlignment="Top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </PasswordBox.Background>
+                    </PasswordBox>
+                    <TextBox x:Name="txt_ftp_time_out" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="10" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_ftp_root" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="12" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Margin="5,0,5,0">
+                <Grid  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="#ffdcddde" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Background="Gray" BorderThickness="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" >
+                        <TextBlock TextWrapping="NoWrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="Cài Đặt Mysql Server" FontSize="14" FontWeight="Bold"/>
+                    </Border>
+                    <Label Content="Server IP:" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label Content="Port:" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="3"/>
+                    <Button  Content="Lưu" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White" Template="{DynamicResource btnTmplNormal}" HorizontalAlignment="Center" Grid.Row="13" VerticalAlignment="Center" Width="75" Height="28" Click="btn_Click_Mysql_save"  >
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_normal.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="User:" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
+                    <Label Content="Pass:" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Center"/>
+                    <Label Content="Time out:" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Center"/>
+                    <Label Content="Database Name:" HorizontalAlignment="Left"  Grid.Row="11" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txt_sql_ip" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="2" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_sql_port" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="4" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_sql_user" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="6" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <PasswordBox x:Name="txt_sql_pass" HorizontalAlignment="Stretch" Height="26" Padding="10,5" Grid.Row="8" VerticalAlignment="Top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </PasswordBox.Background>
+                    </PasswordBox>
+                    <TextBox x:Name="txt_sql_time" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="10" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBox x:Name="txt_sql_db" HorizontalAlignment="Stretch" Height="26" Padding="10,5"  Grid.Row="12" TextWrapping="NoWrap" Text="" VerticalAlignment="top" Margin="10,0" BorderBrush="{x:Null}" BorderThickness="0" Foreground="White">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                        </TextBox.Background>
+                    </TextBox>
+                </Grid>
+                
+            </Border>
+
+        </Grid>
+    </Canvas>
+
+</UserControl>

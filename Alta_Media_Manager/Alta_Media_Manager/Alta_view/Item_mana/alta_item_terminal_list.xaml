@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.Item_mana.alta_item_terminal_list"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="26" d:DesignWidth="300" FontFamily="Verdana">
+    <Grid Margin="5,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="269*"/>
+        </Grid.ColumnDefinitions>
+        <Image  HorizontalAlignment="Left" Height="14" Margin="0" VerticalAlignment="Center" Width="22" Source="/Alta_Media_Manager;component/Asset/Alta_icon/icon_terminal.png"/>
+        <Label x:Name="lb_name" Content="Label" Grid.Column="1" HorizontalAlignment="Stretch"  Margin="0,2" VerticalAlignment="Center" Height="26"/>
+
+    </Grid>
+</UserControl>

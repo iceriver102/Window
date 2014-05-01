@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.add_user_view"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="663" d:DesignWidth="1346" FontFamily="Verdana">
+    <UserControl.Resources>
+        <DataTemplate x:Key="TypeUserListTemplate">
+            <TextBlock Text="{Binding alta_name}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Background="#804F4F4F" MouseLeftButtonDown="Hide_View_Click" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Center" Height="450" Margin="0" Grid.Row="1" VerticalAlignment="Center" Width="400" MouseDown="nothing_click">
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="91*"/>
+                    <ColumnDefinition Width="305*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="38*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Stretch"  Margin="0" VerticalAlignment="Stretch" Background="#FF040404" >
+                    <TextBlock x:Name="title_txt" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="Thêm User" VerticalAlignment="Center" Foreground="White" FontSize="16" FontWeight="Bold">
+                        <TextBlock.Effect>
+                            <DropShadowEffect ShadowDepth="4" Direction="330" Color="#FFB83A00" Opacity="0.5"
+                              BlurRadius="4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,16,0,17" Grid.Row="1" TextWrapping="Wrap" Text="Tên:" VerticalAlignment="Center" Height="16" TextAlignment="Right" />
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,17,0,15" Grid.Row="2" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Center" Height="16"  TextAlignment="Right"/>
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,11" Grid.Row="3" TextWrapping="Wrap" Text="Mật khẩu:" VerticalAlignment="Center" Height="16" TextAlignment="Right"/>
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,19.5" Grid.Row="4" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Center" Height="16" TextAlignment="Right"/>
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,19.5" Grid.Row="5" TextWrapping="Wrap" Text="Phone:" VerticalAlignment="Center" Height="16" TextAlignment="Right"/>
+                <TextBlock HorizontalAlignment="Stretch" Margin="0,19.5" Grid.Row="6" TextWrapping="Wrap" Text="Type:" VerticalAlignment="Center" Height="16" TextAlignment="Right"/>
+                <TextBox x:Name="txt_name" Padding="3,5" Grid.Column="1" HorizontalAlignment="Stretch" Height="30" Margin="10,0" Grid.Row="1" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
+                <TextBox x:Name="txt_username" Padding="3,5" Grid.Column="1" Height="30" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="2" VerticalAlignment="Center"/>
+                <PasswordBox x:Name="txt_pass" Padding="3,5" Grid.Column="1" Height="30" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="3" VerticalAlignment="Center"/>
+                <TextBox x:Name="txt_email" Padding="3,5" Grid.Column="1" Height="30" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="4" VerticalAlignment="Center"/>
+                <TextBox x:Name="txt_phone" Padding="3,5" Grid.Column="1" Height="30" HorizontalAlignment="Stretch" Margin="10,0" Grid.Row="5" VerticalAlignment="Center"/>
+                <ComboBox ItemTemplate="{DynamicResource TypeUserListTemplate}"  x:Name="cb_type_user" Grid.Column="1"  Grid.Row="6" Height="30"  Margin="10,0" />
+                <Grid Grid.Column="0" HorizontalAlignment="Stretch" Margin="0" Grid.Row="8" VerticalAlignment="Stretch" Grid.ColumnSpan="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>                      
+                    </Grid.ColumnDefinitions>
+                    <Button Cursor="Hand" Template="{DynamicResource btnTmplNormal}" Content="Lưu" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="76" Height="29" Click="btn_save_click" Foreground="White" Grid.Column="1">
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_normal.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+
+
+
+
+
+
+
+            </Grid>
+        </Border>
+        <Button BorderThickness="0" Cursor="Hand"  HorizontalAlignment="Center" Margin="859,49,459,500" VerticalAlignment="Center" Width="28" Height="28" Click="btn_Close_Click" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Foreground="White" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_close_box.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</UserControl>

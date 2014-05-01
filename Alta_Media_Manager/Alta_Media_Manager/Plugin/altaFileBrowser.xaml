@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Plugin.altaFileBrowser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="300" FontFamily="Verdana">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Browser" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Cursor="Hand" Background="#FFFB8829" Click="Browser_Click_btn"/>
+        <TextBox x:Name="txtFile" Padding="5,0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch"  Margin="0" TextWrapping="NoWrap"  VerticalAlignment="Stretch" />
+    </Grid>
+</UserControl>

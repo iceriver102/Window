@@ -1,0 +1,963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6098B83-9710-4A33-AC3F-13B7E09A5D80}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Alta_Media_Manager</RootNamespace>
+    <AssemblyName>Alta_Media_Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="MySql.Data">
+      <HintPath>D:\thanh giang\kasati\Media_Manager\Media_Manager\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core">
+      <HintPath>D:\thanh giang\kasati\Media_Manager\Media_Manager\bin\Debug\Vlc.DotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Core.Interops">
+      <HintPath>D:\thanh giang\kasati\Media_Manager\Media_Manager\bin\Debug\Vlc.DotNet.Core.Interops.dll</HintPath>
+    </Reference>
+    <Reference Include="Vlc.DotNet.Wpf">
+      <HintPath>D:\thanh giang\kasati\Media_Manager\Media_Manager\bin\Debug\Vlc.DotNet.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="WebcamControl">
+      <HintPath>D:\thanh giang\WebcamControl.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfScheduler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\WpfScheduler-Source-code-1.1\bin\Release\WpfScheduler.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Alta_view\add_user_view.xaml.cs">
+      <DependentUpon>add_user_view.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\admin_add_playlist_terminal.xaml.cs">
+      <DependentUpon>admin_add_playlist_terminal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_add_camera.xaml.cs">
+      <DependentUpon>alta_add_camera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_add_manhinh.xaml.cs">
+      <DependentUpon>alta_add_manhinh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_add_playlist.xaml.cs">
+      <DependentUpon>alta_add_playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_add_Video.xaml.cs">
+      <DependentUpon>alta_add_Video.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_edit_manhinh.xaml.cs">
+      <DependentUpon>alta_edit_manhinh.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_load_playlist_of_media.xaml.cs">
+      <DependentUpon>alta_load_playlist_of_media.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_load_schedule.xaml.cs">
+      <DependentUpon>alta_load_schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_Media_Player.xaml.cs">
+      <DependentUpon>alta_Media_Player.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_Schedule.xaml.cs">
+      <DependentUpon>alta_Schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\alta_setting_view.xaml.cs">
+      <DependentUpon>alta_setting_view.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Class\alta_class_media.cs" />
+    <Compile Include="Alta_view\Class\alta_class_playlist.cs" />
+    <Compile Include="Alta_view\Class\alta_class_schedules.cs" />
+    <Compile Include="Alta_view\Class\alta_class_user.cs" />
+    <Compile Include="Alta_view\Class\alta_list_playlist.cs" />
+    <Compile Include="Alta_view\Class\alta_list_playlist_user.cs" />
+    <Compile Include="Alta_view\Class\alta_list_schedules.cs" />
+    <Compile Include="Alta_view\DateChooserControl.xaml.cs">
+      <DependentUpon>DateChooserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\alta_item_list_view.xaml.cs">
+      <DependentUpon>alta_item_list_view.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\alta_Item_Media.xaml.cs">
+      <DependentUpon>alta_Item_Media.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\alta_item_terminal_list.xaml.cs">
+      <DependentUpon>alta_item_terminal_list.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\alta_playlist_Item.xaml.cs">
+      <DependentUpon>alta_playlist_Item.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_Media.xaml.cs">
+      <DependentUpon>Item_Media.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_media_select.xaml.cs">
+      <DependentUpon>Item_media_select.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_Schedule.xaml.cs">
+      <DependentUpon>Item_Schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_Schedule_details.xaml.cs">
+      <DependentUpon>Item_Schedule_details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_thietbi.xaml.cs">
+      <DependentUpon>Item_thietbi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_User.xaml.cs">
+      <DependentUpon>Item_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_user_select.xaml.cs">
+      <DependentUpon>Item_user_select.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Item_mana\Item_view_camera.xaml.cs">
+      <DependentUpon>Item_view_camera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Mana_camera.xaml.cs">
+      <DependentUpon>Mana_camera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Mana_Plan.xaml.cs">
+      <DependentUpon>Mana_Plan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\mana_Thiet_bi.xaml.cs">
+      <DependentUpon>mana_Thiet_bi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Mana_user.xaml.cs">
+      <DependentUpon>Mana_user.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Mana_Video.xaml.cs">
+      <DependentUpon>Mana_Video.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Mysql_helpper\mysql_alta_helpper.cs" />
+    <Compile Include="Alta_view\Mysql_helpper\Mysql_Optimize_Class.cs" />
+    <Compile Include="Alta_view\admin_add_user_schedule.xaml.cs">
+      <DependentUpon>admin_add_user_schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\playlist_view_add_shcedule.xaml.cs">
+      <DependentUpon>playlist_view_add_shcedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\Streaming_view.xaml.cs">
+      <DependentUpon>Streaming_view.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_list_media.xaml.cs">
+      <DependentUpon>View_list_media.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_list_playlist.xaml.cs">
+      <DependentUpon>View_list_playlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_List_TerminalFree.xaml.cs">
+      <DependentUpon>View_List_TerminalFree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_List_Terminal.xaml.cs">
+      <DependentUpon>View_List_Terminal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_List_Terminal_In_Schedule.xaml.cs">
+      <DependentUpon>View_List_Terminal_In_Schedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_list_user_of_parent.xaml.cs">
+      <DependentUpon>View_list_user_of_parent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\View_list_user.xaml.cs">
+      <DependentUpon>View_list_user.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Alta_view\view_schedule_details.xaml.cs">
+      <DependentUpon>view_schedule_details.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class\alta_class_ftp.cs" />
+    <Compile Include="Class\alta_client.cs" />
+    <Compile Include="Class\CommonUtilities.cs" />
+    <Compile Include="Class\FileOperations.cs" />
+    <Compile Include="Class\Ftp_Sever.cs" />
+    <Compile Include="Class\StaticFunction.cs" />
+    <Compile Include="Class\User.cs" />
+    <Compile Include="Class\userType.cs" />
+    <Compile Include="demoxaml.xaml.cs">
+      <DependentUpon>demoxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Item_UC\Item_Menu.xaml.cs">
+      <DependentUpon>Item_Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\altaFileBrowser.xaml.cs">
+      <DependentUpon>altaFileBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\AutoCompleteMedia.xaml.cs">
+      <DependentUpon>AutoCompleteMedia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\AutoCompleteTerminal.xaml.cs">
+      <DependentUpon>AutoCompleteTerminal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\AutoCompleteTextBox.xaml.cs">
+      <DependentUpon>AutoCompleteTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\AutoCompleteUser.xaml.cs">
+      <DependentUpon>AutoCompleteUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\dateChoose.xaml.cs">
+      <DependentUpon>dateChoose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\ftp_download.xaml.cs">
+      <DependentUpon>ftp_download.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\ftp_upload.xaml.cs">
+      <DependentUpon>ftp_upload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin\TemplateSelector.cs" />
+    <Compile Include="View\View_setting_mysql.xaml.cs">
+      <DependentUpon>View_setting_mysql.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window_Main.xaml.cs">
+      <DependentUpon>Window_Main.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Alta_Themes\Metro\Controls\ActionButtons\CloseButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroActiveButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroCheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroFonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroProgressbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroTabControlBottom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\MetroTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Controls\OtherMetroTabs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Images\Logos\MetroWPFTemplate_2_logo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Blue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Green.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Orange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_Themes\Metro\Themes\Purple.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_view\add_user_view.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\admin_add_playlist_terminal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_view\alta_add_camera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_add_manhinh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_add_playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_add_Video.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_edit_manhinh.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_load_playlist_of_media.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_load_schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_Media_Player.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_Schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\alta_setting_view.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\DateChooserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\alta_item_list_view.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\alta_Item_Media.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\alta_item_terminal_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\alta_playlist_Item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_Media.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_media_select.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_Schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_Schedule_details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_thietbi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_user_select.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Item_mana\Item_view_camera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Mana_camera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Mana_Plan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\mana_Thiet_bi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Mana_user.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Mana_Video.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\admin_add_user_schedule.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_view\playlist_view_add_shcedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\Streaming_view.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\View_list_media.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\View_list_playlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\View_List_TerminalFree.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_view\View_List_Terminal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\View_List_Terminal_In_Schedule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\View_list_user_of_parent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Alta_view\View_list_user.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Alta_view\view_schedule_details.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="demoxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Item_UC\Item_Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Plugin\altaFileBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Plugin\AutoCompleteMedia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Plugin\AutoCompleteTerminal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Plugin\AutoCompleteTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\Configuration.cs" />
+    <Compile Include="Class\Mysql_helper.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Plugin\AutoCompleteUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Plugin\dateChoose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Plugin\ftp_download.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Plugin\ftp_upload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_setting_mysql.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window_Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Alta_Themes\Metro\Images\Logos\MetroWPFTemplate_2_logo.ai" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\load.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\password_txt.png" />
+    <Resource Include="Asset\Image\userName_txt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\btn_login_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\btn_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\setting-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\bar_header.png" />
+    <Resource Include="Asset\Image\menu.png" />
+    <Resource Include="Asset\Image\menu_action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Item\calendar-icon.png" />
+    <Resource Include="Asset\Item\display_icon.png" />
+    <Resource Include="Asset\Item\Media_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Item\icon-tv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Item\camera_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\bar_action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\search_tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\btn_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\circle-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Icon\video_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Icon\video_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\bg_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Icon\del_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Icon\btn_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alta_view\Class\alta_class_temiral.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\video-thumbnail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\video-thumbnail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Image\icon_playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Icon\information-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\bg_images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\txt_username.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\txt_pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\btn_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Items\item-calendar.png" />
+    <Resource Include="Asset\Alta_Items\item-playlist.png" />
+    <Resource Include="Asset\Alta_Items\item-terminal.png" />
+    <Resource Include="Asset\Alta_Items\item-tvcap.png" />
+    <Resource Include="Asset\Alta_Items\item-video.png" />
+    <Resource Include="Asset\Alta_Items\item_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\header_bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\btn_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\btn_close_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\btn_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Items\item_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn-edit.png" />
+    <Resource Include="Asset\Alta_Btn\btn_add_play_list.png" />
+    <Resource Include="Asset\Alta_Btn\btn_delete.png" />
+    <Resource Include="Asset\Alta_Btn\btn_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_icon\icon-duyet.png" />
+    <Resource Include="Asset\Alta_icon\icon-not-duyet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Thumbnails\tb_video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\bg_item_media.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\txt_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\small_av_playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_hover.png" />
+    <Resource Include="Asset\Alta_Btn\btn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Alta_Themes\Metro\Images\settings_logo.png" />
+    <Resource Include="Alta_Themes\Metro\Images\super_patcher.png" />
+    <Resource Include="Alta_Themes\Metro\Images\Vectored\freezeVector.png" />
+    <Resource Include="Alta_Themes\Metro\Images\Vectored\rebootVector.png" />
+    <Resource Include="Alta_Themes\Metro\Images\Vectored\screenshotVector.png" />
+    <Resource Include="Alta_Themes\Metro\Images\Vectored\unfreezeVector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Alta_Themes\Metro\Controls\MetroColourPicker\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_add_normal.png" />
+    <Resource Include="Asset\Alta_Btn\btn_search_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Images\btn_back.png" />
+    <Resource Include="Asset\Images\btn_next.png" />
+    <Resource Include="Asset\Images\btn_open.png" />
+    <Resource Include="Asset\Images\btn_play.png" />
+    <Resource Include="Asset\Images\btn_stop.png" />
+    <Resource Include="Asset\Images\Close_btn.png" />
+    <Resource Include="Asset\Images\fullscreen_exit.png" />
+    <Resource Include="Asset\Images\full_icon.png" />
+    <Resource Include="Asset\Images\icon_close.png" />
+    <Resource Include="Asset\Images\media-pause.png" />
+    <Resource Include="Asset\Images\sound.png" />
+    <Resource Include="Asset\Images\sound_mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\fancybox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_close_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Images\bg_item_playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_dissable.png" />
+    <Resource Include="Asset\Alta_Btn\btn_enable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_delete_playlist.png" />
+    <Resource Include="Asset\Alta_Btn\btn_delete_playlist_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_add_play_list_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_back.png" />
+    <Resource Include="Asset\Alta_Btn\btn_next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_icon\icon_terminal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_back_disable.png" />
+    <Resource Include="Asset\Alta_Btn\btn_next_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_fullscreen.png" />
+    <Resource Include="Asset\Alta_Btn\btn_fullscreen_hover.png" />
+    <Resource Include="Asset\Alta_Btn\btn_off_terminal.png" />
+    <Resource Include="Asset\Alta_Btn\btn_on_terminnal.png" />
+    <Resource Include="Asset\Alta_Btn\btn_view_details_playlist.png" />
+    <Resource Include="Asset\Alta_Btn\btn_view_details_playlist_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_turnoff.png" />
+    <Resource Include="Asset\Alta_Btn\btn_turnon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_manhinhchieu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_playlist_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_video_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_camera_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_add_playlist_scenn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\bg_header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Avatar\av_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\btn_view_camera_user.png" />
+    <Resource Include="Asset\Alta_Btn\btn_view_user_thiet_bi.png" />
+    <Resource Include="Asset\Alta_Btn\btn_view_user_video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_view_as_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_slideshow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_bluetooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_not_secure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_secure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_bluetooth.png" />
+    <Resource Include="Asset\white\ic_action_camera.png" />
+    <Resource Include="Asset\white\ic_action_edit.png" />
+    <Resource Include="Asset\white\ic_action_not_secure.png" />
+    <Resource Include="Asset\white\ic_action_remove.png" />
+    <Resource Include="Asset\white\ic_action_secure.png" />
+    <Resource Include="Asset\white\ic_action_slideshow.png" />
+    <Resource Include="Asset\white\ic_action_view_as_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_bluetooth_connected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_next_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_previous_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_next_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_previous_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\Alta_Btn\ic_action_paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_location_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_location_found.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_full_screen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_add_to_queue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_reply_all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_screen_locked_to_portrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\white\ic_action_brightness_auto.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.Mana_user"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="663" d:DesignWidth="1346" FontFamily="Verdana" >
+    <Canvas x:Name="main_layout" Height="663" Width="1346">
+        <Grid x:Name="Grid_content" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Canvas.Left="0" Canvas.Top="0" Width="1346" Height="663" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="109*"/>
+                <ColumnDefinition Width="449*"/>
+                <ColumnDefinition Width="115*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="200*"/>
+                <RowDefinition Height="18*"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#7FF48120"  BorderThickness="0,1" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ListBox x:Name="list_Box_Item" SelectionMode="Single"  Grid.Row="1" Margin="15,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" >
+                    <ListBox.Resources>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="IsTabStop" Value="False"/>
+                            <Setter Property="Focusable" Value="False"/>
+                        </Style>
+                    </ListBox.Resources>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                       ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                       MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                       ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Margin" Value="8"/>
+                            <Setter Property="Padding" Value="0"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Border>
+            <StackPanel  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"   VerticalAlignment="Stretch" Orientation="Horizontal">
+                <TextBlock TextWrapping="NoWrap" Text="Tìm kiếm:" VerticalAlignment="Center" Margin="5,0"/>
+                <TextBox x:Name="txt_Key_Search" TextWrapping="NoWrap" BorderThickness="0" Text="" VerticalAlignment="Center" Margin="5,14,5,13" Height="26" Width="311" Padding="8,5" BorderBrush="{x:Null}" Foreground="White" KeyUp="KeyUpEnter" >
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/txt_search.png" Stretch="Uniform"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Button x:Name="btnSearch" Width="24" Height="24"  VerticalAlignment="Center" Margin="5,0" Template="{DynamicResource ResourceKey=btn_tmp_search}" Click="Btn_Search_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_search_normal.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            <Button x:Name="btnAdd"  Grid.Column="2" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Center" Width="43" Height="41" Template="{DynamicResource btn_tmp_add}" BorderBrush="{x:Null}" BorderThickness="0" Click="btn_Add_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_add_normal.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Column="2" HorizontalAlignment="Right" Margin="55,0" TextWrapping="Wrap" Text="Thêm User:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="Cb_Sort" HorizontalAlignment="Right" Margin="10,0" VerticalAlignment="Center" Width="110" Height="25" Padding="5" SelectionChanged="Cb_Sort_Selected_Change">
+                <Label x:Name="sort_time" Content="Thời gian tạo"  Height="25" Foreground="White" />
+                <Label x:Name="sort_name" Content="Tên User" HorizontalAlignment="Stretch"  Height="25" Foreground="White"/>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Sắp xếp theo:" VerticalAlignment="Center"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Stretch" Width="80" Margin="409,2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_backPage"  Template="{DynamicResource btnTmplNormal}"  Margin="0"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="32" Height="32" BorderBrush="{x:Null}" Foreground="White" Click="btn_backPage_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_back_disable.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btn_nextPage"  Margin="0" Template="{DynamicResource btnTmplNormal}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="32" Height="32"  Grid.Column="1" BorderBrush="{x:Null}" Foreground="White" Click="btn_nextPage_Click">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/btn_next.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Label x:Name="lb_status" Content="status" HorizontalAlignment="Left" Margin="0,10,0,12" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="474" Height="24"/>
+        </Grid>
+    </Canvas>
+</UserControl>

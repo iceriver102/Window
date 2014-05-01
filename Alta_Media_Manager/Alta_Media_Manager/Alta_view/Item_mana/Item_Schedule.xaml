@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Alta_Media_Manager.Alta_view.Item_mana.Item_Schedule"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="177" d:DesignWidth="298" FontFamily="Verdana" FontSize="12">
+    <Border BorderBrush="Gray" BorderThickness="1" Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="61*"/>
+                <ColumnDefinition Width="87*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="105*"/>
+                <RowDefinition Height="37*"/>
+            </Grid.RowDefinitions>
+            <Image  Grid.Row="1" Source="/Alta_Media_Manager;component/Asset/Alta_Avatar/av_manhinhchieu.png" Margin="5,0" />
+            <StackPanel Grid.Column="1"  Grid.Row="1" Margin="10,0">
+                <Label x:Name="lb_userName" Content="Label"/>
+                <Label x:Name="lb_DateStd" Content="Label"/>
+                <Label x:Name="lb_DateEnd" Content="Label"/>
+            </StackPanel>
+            <Grid x:Name="bar_action" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Background="#99000000">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="7" BorderBrush="{x:Null}" Width="30" Height="30" Click="btn_add_click" Template="{DynamicResource btn_tmp}">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Btn/ic_action_new.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+            <Label x:Name="lbName" FontWeight="Bold" Content="Label" Grid.Column="0" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Grid.Row="0"/>
+
+        </Grid>
+    </Border>
+</UserControl>

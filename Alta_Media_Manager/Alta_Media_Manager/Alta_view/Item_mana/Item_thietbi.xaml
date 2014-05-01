@@ -1,0 +1,90 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Class="Alta_Media_Manager.Alta_view.Item_mana.Item_thietbi" 
+             mc:Ignorable="d" 
+             d:DesignHeight="177" d:DesignWidth="298" FontFamily="Verdana" FontSize="12" MouseEnter="Show_Action_Bar" MouseLeave="Hide_Action_Bar">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/Alta_Images/bg_item_media.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="157*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lb_name" Content="Label" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center"   Grid.ColumnSpan="2" Margin="5,5" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Stretch" Margin="10,0,0,0"   Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch" Source="/Alta_Media_Manager;component/Asset/Alta_Avatar/av_manhinhchieu.png"  />
+
+        <StackPanel Margin="10,0" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Stretch" >
+            <Label x:Name="lb_ip" Content="" VerticalContentAlignment="Center" Height="25"/>
+            <Label x:Name="lb_name_type" Content="" VerticalContentAlignment="Center" Height="25"/>            
+            <Label x:Name="lb_user_name" Content="" VerticalContentAlignment="Center" Height="25"/>
+            <Label x:Name="lb_name_file" Content="" VerticalContentAlignment="Center" Height="25"/>
+        </StackPanel>
+        <Border x:Name="grid_action" Grid.ColumnSpan="2" Grid.Row="3" Background="#9f000000" Visibility="Visible">
+            <Grid Grid.ColumnSpan="3" Grid.Row="3"  Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_turn_off"  Grid.Column="0" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_turn_off_click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_screen_locked_to_portrait.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="status_btn"  Grid.Column="1" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_warning.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="2" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_setting_click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_settings.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="3" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_Stop_Play_Click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_stop.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="4" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_view_playlist_click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_add_to_queue.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="5" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_full_screen" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_full_screen.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="6" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="ViewStreaming" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_reply_all.png"/>
+                    </Button.Background>
+                </Button>
+                <Button  Grid.Column="7" Width="32" Height="32" BorderThickness="0" BorderBrush="{x:Null}" Template="{DynamicResource btn_tmp}" Click="btn_delete_click" >
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" ImageSource="/Alta_Media_Manager;component/Asset/white/ic_action_remove.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>
